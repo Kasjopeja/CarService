@@ -8,7 +8,7 @@
 
 class Calendar {
 public:
-    // implementuj funkcje związane z kalendarzem
+    // funkcje związane z kalendarzem
 };
 
 

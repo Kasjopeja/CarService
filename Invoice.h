@@ -8,7 +8,7 @@
 
 class Invoice {
 public:
-    // implementuj funkcje związane z fakturami
+    // funkcje związane z fakturami
 };
 
 

@@ -8,7 +8,7 @@
 
 class Warehouse {
 public:
-    // implementuj funkcje związane z magazynem
+    // funkcje związane z magazynem
 };
 
 

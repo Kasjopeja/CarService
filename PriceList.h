@@ -8,7 +8,7 @@
 
 class PriceList {
 public:
-    // implementuj funkcje związane z cennikiem
+    // funkcje związane z cennikiem
 };
 
 

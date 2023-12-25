@@ -4,8 +4,7 @@
 #include "includes.h"
 
 class Authentication {
-public:
-    static bool login(string login, string password);
+
 };
 
 

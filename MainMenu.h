@@ -10,6 +10,8 @@ public:
 
     static string getLogin();
     static string getPassword();
+private:
+    bool isLoggedIn;
 };
 
 

@@ -5,7 +5,7 @@
 #include "OfficeWorker.h"
 #include <iostream>
 
-OfficeWorker::OfficeWorker(const std::string& name) : user(name) {}
+OfficeWorker::OfficeWorker(const std::string& name) : User(name) {}
 
 void OfficeWorker::manageWarehouse() {
     std::cout << "Zarządzanie magazynem\n";

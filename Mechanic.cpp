@@ -5,7 +5,7 @@
 #include "Mechanic.h"
 #include <iostream>
 
-Mechanic::Mechanic(const std::string& name) : user(name) {}
+Mechanic::Mechanic(const std::string& name) : User(name) {}
 
 void Mechanic::manageWarehouse() {
     std::cout << "Zarządzanie magazynem (stanem części)\n";

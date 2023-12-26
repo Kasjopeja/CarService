@@ -1,5 +1,4 @@
 #include <iostream>
-#include <conio.h>
 
 #include "User.h"
 #include "OfficeWorker.h"
@@ -15,7 +14,6 @@ enum interface
 
 int main() {
 
-    std::cout << "\t \t \t CAR SERVICE v0.1" << std::endl;
 
     Menu mainMenuLogowanie;
     char key;

@@ -8,11 +8,14 @@ Menu::Menu() : selectedOption(1) {}
 int Menu::showAllOpions(int wariant)
 {
     system("cls");
-    std::cout << "Wybierz akcjê:\n";
 
     switch (wariant)
     {
     case 0:
+
+        std::cout << "CAR SERVICE v0.1 \n " << std::endl;
+
+        std::cout << "LOGOWANIE:\n";
 
         std::cout << (selectedOption == 1 ? "> " : "  ") << "Pracownik Biura\n";
         std::cout << (selectedOption == 2 ? "> " : "  ") << "Mehcanik\n";
@@ -21,6 +24,8 @@ int Menu::showAllOpions(int wariant)
         break;
 
     case 1:
+
+        std::cout << "MENU GLOWNE:\n \n";
 
         std::cout << (selectedOption == 1 ? "> " : "  ") << "Zarzadzaj magazynem\n";
         std::cout << (selectedOption == 2 ? "> " : "  ") << "Zarzadzaj cennikiem\n";
@@ -31,6 +36,8 @@ int Menu::showAllOpions(int wariant)
         break;
 
     case 2:
+
+        std::cout << "MENU GLOWNE:\n \n";
 
         std::cout << (selectedOption == 1 ? "> " : "  ") << "Zarzadzaj magazynem\n";
         std::cout << (selectedOption == 2 ? "> " : "  ") << "Zarzadzaj kalendarzem\n";

@@ -1,6 +1,12 @@
 #include "Menu.h"
 #include <iostream>
-//#include <conio.h>
+
+#ifdef _WIN32
+    #include <conio.h>
+    bool isWin = true;
+#elif
+    bool isWin = false;
+#endif
 
 
 Menu::Menu() : selectedOption(1) {}
@@ -51,8 +57,9 @@ int Menu::showAllOpions(int wariant)
 bool Menu::navigate(int maxOption)
 {
     char key;
-    //key = _getch();
-    std::cin >> key;
+
+    if (isWin) key = _getch();
+    else std::cin >> key;
 
     switch (key) {
     case 'w': // Strza³ka w górê
@@ -66,6 +73,9 @@ bool Menu::navigate(int maxOption)
     case 'a':
         selectedOption = maxOption;
         return 1;
+    default:
+        return 1;
+    
     }
 
     return 0;

@@ -1,6 +1,6 @@
 #include "Menu.h"
 #include <iostream>
-#include <conio.h>
+//#include <conio.h>
 
 
 Menu::Menu() : selectedOption(1) {}
@@ -24,7 +24,7 @@ int Menu::showAllOpions(int wariant)
 
         std::cout << (selectedOption == 1 ? "> " : "  ") << "Zarzadzaj magazynem\n";
         std::cout << (selectedOption == 2 ? "> " : "  ") << "Zarzadzaj cennikiem\n";
-        std::cout << (selectedOption == 3 ? "> " : "  ") << "Wystaw fakturê\n";
+        std::cout << (selectedOption == 3 ? "> " : "  ") << "Wystaw fakture\n";
         std::cout << (selectedOption == 4 ? "> " : "  ") << "Wyjscie\n";
 
         return 4;
@@ -43,7 +43,10 @@ int Menu::showAllOpions(int wariant)
 
 bool Menu::navigate(int maxOption)
 {
-    char key = _getch();
+    char key;
+    //key = _getch();
+    std::cin >> key;
+
     switch (key) {
     case 'w': // Strza³ka w górê
         selectedOption = (selectedOption > 1) ? selectedOption - 1 : maxOption;
@@ -51,7 +54,10 @@ bool Menu::navigate(int maxOption)
     case 's': // Strza³ka w dó³
         selectedOption = (selectedOption < maxOption) ? selectedOption + 1 : 1;
         break;
-    default:
+    case 'd':
+        return 1;
+    case 'a':
+        selectedOption = maxOption;
         return 1;
     }
 

@@ -10,13 +10,7 @@
 #include <vector>
 #include <fstream>
 #include <string>
-
-
-class Warehouse {
-public:
-
-    std::vector <Parts> Wczytaj();
-};
+#include <sstream>
 
 class Parts
 {
@@ -27,7 +21,20 @@ class Parts
 public:
 
     Parts(unsigned int, std::string, unsigned int);
+    void Wyswietl();
 };
+
+
+class Warehouse {
+
+    std::vector <Parts> stanMagazynu;
+
+public:
+
+    void Wczytaj();
+    void Wyswietl();
+};
+
 
 
 #endif //CARSERVICE_WAREHOUSE_H

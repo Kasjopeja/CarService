@@ -22,7 +22,8 @@ public:
 
     Parts(unsigned int, std::string, unsigned int);
     void Wyswietl();
-    void Edytuj();
+    void Edytuj(unsigned int);
+    void Zapisz();
 };
 
 

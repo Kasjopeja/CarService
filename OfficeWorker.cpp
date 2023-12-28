@@ -44,6 +44,7 @@ void OfficeWorker::manageWarehouse() {
             warehouse.Dodaj();
             break;
         case 3:
+            warehouse.Edytuj();
             break;
 
         case 4:

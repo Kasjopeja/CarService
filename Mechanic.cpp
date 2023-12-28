@@ -24,7 +24,7 @@ void Mechanic::manageWarehouse() {
     std::string ID;
 
     do {
-        maxOption = menuStanMagazynu.showAllOpions(3);
+        maxOption = menuStanMagazynu.showAllOpions(4);
         key = menuStanMagazynu.navigate(maxOption);
 
     } while (!key);
@@ -40,10 +40,9 @@ void Mechanic::manageWarehouse() {
         break;
 
     case 2:
+        warehouse.Edytuj();
         break;
     case 3:
-        break;
-    case 4:
         return;
     }
 }

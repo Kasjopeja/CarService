@@ -62,17 +62,45 @@ void Warehouse::Dodaj()
 
 void Warehouse::Edytuj()
 {
+	std::cout << "EDYTOWANIE ISTNIEJACEGO ELEMENTU \n\n";
+
+	unsigned int amount;
+	unsigned int ID;
+
+	std::cout << "ID elementu do edycji: ";
+	std::cin >> ID;
+	std::cout << std::endl;
+	std::cout << "Nowa Ilosc: ";
+	std::cin >> amount;
+
+	stanMagazynu[ID - 1].Edytuj(amount);
+
+	std::ofstream plik("Magazyn.txt", std::ofstream::out | std::ofstream::trunc);
+	plik.close();
+
+	for (int i = 0; i < stanMagazynu.size(); i++)
+	{
+		stanMagazynu[i].Zapisz();
+	}
 
 }
 
 void Parts::Wyswietl()
 {
-	std::cout << "ID: " << ID << " \t Nazwa: " << name << "\t Ilosc: " << amount << std::endl;
+	std::cout << "ID: " << ID << " \t\tNazwa: " << name << "\t\tIlosc: " << amount << std::endl;
 }
 
-void Parts::Edytuj()
+void Parts::Edytuj(unsigned int newAmount)
 {
-
+	this->amount = newAmount;
 }
+
+void Parts::Zapisz() 
+{
+	std::ofstream plik("Magazyn.txt", std::ios::app);
+	plik << ID << " " << name << " " << amount << "\n";
+	plik.close();
+}
+
 
 Parts::Parts(unsigned int ID, std::string name, unsigned int amount) : ID(ID), name(name), amount(amount) {}

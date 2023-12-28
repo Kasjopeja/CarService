@@ -28,9 +28,9 @@ void Mechanic::manageCalendar() {
                 std::cin.ignore();
                 std::cout << "Podaj typ usterki: ";
                 std::getline(std::cin, type);
-                std::cout << "Podaj datę zgłoszenia: ";
+                std::cout << "Podaj datę zgłoszenia (dd-mm-rrrr): ";
                 std::cin >> reportDate;
-                std::cout << "Podaj planowaną datę wykonania: ";
+                std::cout << "Podaj planowaną datę wykonania (dd-mm-rrrr): ";
                 std::cin >> plannedDate;
 
                 Event event(type, reportDate, plannedDate);

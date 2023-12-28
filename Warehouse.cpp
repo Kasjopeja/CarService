@@ -38,6 +38,28 @@ void Warehouse::Wyswietl()
 	}
 }
 
+void Warehouse::Dodaj()
+{
+	std::cout << "DODAWANIE NOWEGO ELEMENTU \n\n";
+
+	std::ofstream plik("Magazyn.txt", std::ios::app);
+
+	unsigned int ID = stanMagazynu.size() +1;
+	std::string name;
+	unsigned int amount;
+
+	std::cout << "Nazwa: ";
+	std::cin >> name;
+	std::cout << "Ilosc: ";
+	std::cin >> amount;
+
+	Parts part(ID, name, amount);
+	this->stanMagazynu.push_back(part);
+
+	plik << "\n" << ID << " " << name << " " << amount;
+	plik.close();
+}
+
 void Warehouse::Edytuj()
 {
 

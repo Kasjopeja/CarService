@@ -3,27 +3,48 @@
 //
 
 #include "Mechanic.h"
+#include "Menu.h"
 #include <iostream>
 
 Mechanic::Mechanic(const std::string& name) : User(name) {}
 
 void Mechanic::manageWarehouse() {
-    
-    while (true)
+
+    system("cls");
+
+    std::cout << "STAN MAGAZYNU " << std::endl;
+
+    Warehouse warehouse;
+    warehouse.Wczytaj();
+
+    Menu menuStanMagazynu;
+    char key;
+    int maxOption;
+    int choice;
+    std::string ID;
+
+    do {
+        maxOption = menuStanMagazynu.showAllOpions(3);
+        key = menuStanMagazynu.navigate(maxOption);
+
+    } while (!key);
+
+    system("cls");
+    choice = menuStanMagazynu.getSelectedOption();
+
+    switch (choice)
     {
-        system("cls");
-
-        std::cout << "STAN MAGAZYNU \n\n" << std::endl;
-
-        Warehouse warehouse;
-        warehouse.Wczytaj();
+    case 1:
         warehouse.Wyswietl();
+        std::cin >> ID;
+        break;
 
-        std::cout << "\n \nPodaj ID elementu ktorego szczegoly chcesz edytowac, wpisz \"exit\" by wyjsc" << std::endl;
-        std::string action;
-        std::cin >> action;
-
-        if (action == "exit") { return; }
+    case 2:
+        break;
+    case 3:
+        break;
+    case 4:
+        return;
     }
 }
 

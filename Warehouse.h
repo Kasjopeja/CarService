@@ -35,6 +35,7 @@ public:
     void Wczytaj();
     void Wyswietl();
     void Edytuj();
+    void Dodaj();
 };
 
 

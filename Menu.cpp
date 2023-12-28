@@ -51,6 +51,18 @@ int Menu::showAllOpions(int wariant)
 
         return 3;
         break;
+
+    case 3:
+
+        std::cout << "STAN MAGAZYNU \n" << std::endl;
+
+        std::cout << (selectedOption == 1 ? "> " : "  ") << "Wyswietl stan magazynu\n";
+        std::cout << (selectedOption == 2 ? "> " : "  ") << "Dodaj nowy element\n";
+        std::cout << (selectedOption == 3 ? "> " : "  ") << "Edytuj istniejacy element\n";
+        std::cout << (selectedOption == 4 ? "> " : "  ") << "Wyjscie\n";
+
+        return 4;
+        break;
     }
 }
 

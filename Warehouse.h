@@ -22,6 +22,7 @@ public:
 
     Parts(unsigned int, std::string, unsigned int);
     void Wyswietl();
+    void Edytuj();
 };
 
 
@@ -33,6 +34,7 @@ public:
 
     void Wczytaj();
     void Wyswietl();
+    void Edytuj();
 };
 
 

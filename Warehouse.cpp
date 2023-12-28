@@ -36,12 +36,21 @@ void Warehouse::Wyswietl()
 	{
 		this->stanMagazynu[i].Wyswietl();
 	}
+}
+
+void Warehouse::Edytuj()
+{
 
 }
 
 void Parts::Wyswietl()
 {
 	std::cout << "ID: " << ID << " \t Nazwa: " << name << "\t Ilosc: " << amount << std::endl;
+}
+
+void Parts::Edytuj()
+{
+
 }
 
 Parts::Parts(unsigned int ID, std::string name, unsigned int amount) : ID(ID), name(name), amount(amount) {}

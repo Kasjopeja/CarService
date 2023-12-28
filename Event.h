@@ -1,7 +1,3 @@
-//
-// Created by Jakub Wawrzyczek on 28/12/2023.
-//
-
 #ifndef CARSERVICE_EVENT_H
 #define CARSERVICE_EVENT_H
 

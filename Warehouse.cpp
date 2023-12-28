@@ -1,7 +1,3 @@
-//
-// Created by Jakub Wawrzyczek on 25/12/2023.
-//
-
 #include "Warehouse.h"
 
 void Warehouse::Wczytaj()

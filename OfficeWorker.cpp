@@ -1,7 +1,3 @@
-//
-// Created by Jakub Wawrzyczek on 25/12/2023.
-//
-
 #include "OfficeWorker.h"
 #include <iostream>
 #include "Menu.h"

@@ -1,0 +1,4 @@
+1 srubki 10
+2 nakretki 13
+3 kolo 5
+4 klocki 2

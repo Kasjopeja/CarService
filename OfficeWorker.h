@@ -6,14 +6,13 @@
 #include "PriceList.h"
 #include "Invoice.h"
 
-class OfficeWorker {
+class OfficeWorker : public User{
 public:
     OfficeWorker(const std::string& name);
     void manageWarehouse();
     void managePriceList();
     void issueInvoice();
 private:
-    User user;
     Warehouse warehouse;
     PriceList priceList;
 };

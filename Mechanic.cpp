@@ -1,13 +1,47 @@
 #include "Mechanic.h"
+#include "Menu.h"
 #include <iostream>
 
+Mechanic::Mechanic(const std::string& name) : User(name) {}
 Calendar calendar;
 
-Mechanic::Mechanic(const std::string& name) : user(name) {}
-
 void Mechanic::manageWarehouse() {
-    std::cout << "Zarządzanie magazynem (stanem części)\n";
-    // implementacja
+
+    system("cls");
+
+    std::cout << "STAN MAGAZYNU " << std::endl;
+
+    Warehouse warehouse;
+    warehouse.Wczytaj();
+
+    Menu menuStanMagazynu;
+    char key;
+    int maxOption;
+    int choice;
+    std::string ID;
+
+    do {
+        maxOption = menuStanMagazynu.showAllOpions(4);
+        key = menuStanMagazynu.navigate(maxOption);
+
+    } while (!key);
+
+    system("cls");
+    choice = menuStanMagazynu.getSelectedOption();
+
+    switch (choice)
+    {
+    case 1:
+        warehouse.Wyswietl();
+        std::cin >> ID;
+        break;
+
+    case 2:
+        warehouse.Edytuj();
+        break;
+    case 3:
+        return;
+    }
 }
 
 void Mechanic::manageCalendar() {

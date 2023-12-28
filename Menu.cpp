@@ -24,7 +24,7 @@ int Menu::showAllOpions(int wariant)
         std::cout << "LOGOWANIE:\n";
 
         std::cout << (selectedOption == 1 ? "> " : "  ") << "Pracownik Biura\n";
-        std::cout << (selectedOption == 2 ? "> " : "  ") << "Mehcanik\n";
+        std::cout << (selectedOption == 2 ? "> " : "  ") << "Mechanik\n";
 
         return 2;
         break;
@@ -48,6 +48,29 @@ int Menu::showAllOpions(int wariant)
         std::cout << (selectedOption == 1 ? "> " : "  ") << "Zarzadzaj magazynem\n";
         std::cout << (selectedOption == 2 ? "> " : "  ") << "Zarzadzaj kalendarzem\n";
         std::cout << (selectedOption == 3 ? "> " : "  ") << "Wyjœcie\n";
+
+        return 3;
+        break;
+
+    case 3:
+
+        std::cout << "STAN MAGAZYNU \n" << std::endl;
+
+        std::cout << (selectedOption == 1 ? "> " : "  ") << "Wyswietl stan magazynu\n";
+        std::cout << (selectedOption == 2 ? "> " : "  ") << "Dodaj nowy element\n";
+        std::cout << (selectedOption == 3 ? "> " : "  ") << "Edytuj istniejacy element\n";
+        std::cout << (selectedOption == 4 ? "> " : "  ") << "Wyjscie\n";
+
+        return 4;
+        break;
+
+    case 4:
+
+        std::cout << "STAN MAGAZYNU \n" << std::endl;
+
+        std::cout << (selectedOption == 1 ? "> " : "  ") << "Wyswietl stan magazynu\n";
+        std::cout << (selectedOption == 2 ? "> " : "  ") << "Edytuj istniejacy element\n";
+        std::cout << (selectedOption == 3 ? "> " : "  ") << "Wyjscie\n";
 
         return 3;
         break;

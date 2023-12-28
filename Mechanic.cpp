@@ -45,15 +45,18 @@ void Mechanic::manageWarehouse() {
 }
 
 void Mechanic::manageCalendar() {
+
     int choice;
     do {
-        std::cout << "Wybierz akcję edycji kalendarza:\n";
-        std::cout << "1. Dodaj usterkę\n";
-        std::cout << "2. Usuń usterkę\n";
-        std::cout << "3. Wyświetl kalendarz\n";
-        std::cout << "0. Wyjście\n";
-        std::cout << "Wybór: ";
+
+        std::cout << "Wybierz akcje edycji kalendarza:\n";
+        std::cout << "1. Dodaj usterke\n";
+        std::cout << "2. Usun usterke\n";
+        std::cout << "3. Wyswietl kalendarz\n";
+        std::cout << "0. Wyjscie\n";
+        std::cout << "Wybor: ";
         std::cin >> choice;
+        system("cls");
 
         switch (choice) {
             case 1: {

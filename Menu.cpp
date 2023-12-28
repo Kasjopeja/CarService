@@ -24,7 +24,7 @@ int Menu::showAllOpions(int wariant)
         std::cout << "LOGOWANIE:\n";
 
         std::cout << (selectedOption == 1 ? "> " : "  ") << "Pracownik Biura\n";
-        std::cout << (selectedOption == 2 ? "> " : "  ") << "Mehcanik\n";
+        std::cout << (selectedOption == 2 ? "> " : "  ") << "Mechanik\n";
 
         return 2;
         break;

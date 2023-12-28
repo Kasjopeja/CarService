@@ -6,9 +6,16 @@
 #define CARSERVICE_CALENDAR_H
 
 
+#include <vector>
+#include "Event.h"
+
 class Calendar {
 public:
-    // funkcje związane z kalendarzem
+    void addEvent(const Event& event);
+    void removeEvent(int index);
+    void displayEvents() const;
+private:
+    std::vector<Event> events;
 };
 
 

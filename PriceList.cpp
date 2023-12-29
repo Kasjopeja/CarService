@@ -19,16 +19,22 @@ void PriceList::addService() {
 	std::cin >> ID;
 
 	std::cout << "Podaj nazwe: ";
-	std::cin.ignore();			
+	std::cin.ignore();
 	std::getline(std::cin, name);
 
 	std::cout << "Podaj cene: ";
-	std::cin >> price;	
+	std::cin >> price;
 	Service service(ID, name, price);
 	services.push_back(service);
 }
 
-void PriceList::displayPriceList() {}
+void PriceList::displayPriceList() {
+	std::cout << "Cennik uslug:" << std::endl;
+	for (Service& usluga : services) {
+		usluga.displayService();
+	}
+}
+
 
 void PriceList::removeService(unsigned int ID) {
 	auto it = std::remove_if(services.begin(), services.end(),
@@ -46,7 +52,7 @@ void PriceList::removeService(unsigned int ID) {
 void PriceList::addService(const Service& usluga) {
 	services.push_back(usluga);
 }
-//Service PriceList::WybierzUsluge(unsigned int ID) {}
+//Service PriceList::chooseService(unsigned int ID) {}
 
 void Service::changePrice(PriceList& priceList, unsigned int newPrice) {}
 

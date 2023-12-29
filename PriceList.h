@@ -1,6 +1,3 @@
-//
-// Created by Jakub Wawrzyczek on 25/12/2023.
-//
 
 #ifndef CARSERVICE_PRICELIST_H
 #define CARSERVICE_PRICELIST_H
@@ -12,18 +9,23 @@
 class PriceList;
 
 class Service {
-    std::string name;
-    unsigned int price;
-    unsigned int ID;
-    public:
-        Service(std::string, unsigned int, unsigned int);
-        void Wyswietl();
-        void ZmienCene(PriceList& cennik, unsigned int nowaCena);
+	std::string name;
+	unsigned int price;
+	unsigned int ID;
+public:
+	Service(std::string, unsigned int, unsigned int);
+	void Wyswietl();
+	void ZmienCene(PriceList& cennik, unsigned int nowaCena);
 };
 
 class PriceList {
+	std::vector<Service> services;
 public:
-    // funkcje związane z cennikiem
+	void WyswietlCennik();
+	void DodajUsluge(Service& usluga);
+	void UsunUsluge(unsigned int ID);
+	Service WybierzUsluge(unsigned int ID);
+
 };
 
 

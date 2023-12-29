@@ -30,7 +30,7 @@ public:
 	void displayPriceList();
 	void addService();
 	void removeService(unsigned int ID);
-	Service chooseService(unsigned int ID);
+	void chooseService();
 	void addService(const Service& usluga);
 	void changePrice(unsigned int ID);
 };

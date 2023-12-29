@@ -52,7 +52,6 @@ void PriceList::removeService(unsigned int ID) {
 void PriceList::addService(const Service& usluga) {
 	services.push_back(usluga);
 }
-//Service PriceList::chooseService(unsigned int ID) {}
 
 void Service::changePrice(unsigned int price) {
 	this->price = price;
@@ -81,7 +80,30 @@ void PriceList::changePrice(unsigned int ID) {
 }
 
 void Service::displayService() {
-	std::cout << "ID: " << ID << " Nazwa: " << name << " Cena: " << price << std::endl;
+	std::cout << "ID: " << ID << ", Nazwa: " << name << ", Cena: " << price << std::endl;
+}
+
+void PriceList::chooseService() {
+	displayPriceList();
+
+	unsigned int ID;
+	std::cout << "Wprowadz ID uslugi, ktora chcesz modyfikowac: ";
+	std::cin >> ID;
+
+	if (std::cin.fail()) {
+		std::cerr << "Blad: Nieprawidlowe dane wejsciowe." << std::endl;
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		return;
+	}
+
+	for (Service& usluga : services) {
+		if (usluga.getIdService() == ID) {
+			std::cout << "Wybrano usluge o nr ID: " << ID << std::endl;
+			return;
+		}
+	}
+	std::cout << "Nie znaleziono uslugi o ID " << ID << std::endl;
 }
 
 Service::Service(unsigned int ID, std::string name, unsigned int price) : ID(ID), name(name), price(price) {}

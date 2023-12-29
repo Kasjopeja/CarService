@@ -18,7 +18,7 @@ class Service {
 public:
 	Service(unsigned int, std::string, unsigned int);
 	void displayService();
-	void changePrice(PriceList& priceList, unsigned int newPrice);
+	void changePrice(unsigned int newPrice);
 	unsigned int getIdService() const;
 	std::string getName() const;
 	unsigned int getPrice() const;
@@ -32,6 +32,7 @@ public:
 	void removeService(unsigned int ID);
 	Service chooseService(unsigned int ID);
 	void addService(const Service& usluga);
+	void changePrice(unsigned int ID);
 };
 
 

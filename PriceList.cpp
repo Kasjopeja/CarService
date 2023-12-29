@@ -54,7 +54,31 @@ void PriceList::addService(const Service& usluga) {
 }
 //Service PriceList::chooseService(unsigned int ID) {}
 
-void Service::changePrice(PriceList& priceList, unsigned int newPrice) {}
+void Service::changePrice(unsigned int price) {
+	this->price = price;
+}
+
+void PriceList::changePrice(unsigned int ID) {
+	for (Service& usluga : services) {
+		if (usluga.getIdService() == ID) {
+			unsigned int newPrice;
+			std::cout << "Wprowadz nowa cene dla uslugi o ID " << ID << ": ";
+			std::cin >> newPrice;
+
+			if (std::cin.fail()) {
+				std::cerr << "Blad: Nieprawidlowe dane wejsciowe." << std::endl;
+				std::cin.clear(); 
+				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
+				return;
+			}
+
+			usluga.changePrice(newPrice);
+			std::cout << "Zmieniono cene uslugi o ID " << ID << " na " << newPrice << std::endl;
+			return;
+		}
+	}
+	std::cout << "Nie znaleziono uslugi o ID " << ID << std::endl;
+}
 
 void Service::displayService() {
 	std::cout << "ID: " << ID << " Nazwa: " << name << " Cena: " << price << std::endl;

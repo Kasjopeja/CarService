@@ -6,6 +6,7 @@
 #include <vector>
 #include <string>
 #include <fstream>
+#include <algorithm>
 
 class PriceList;
 
@@ -16,17 +17,17 @@ class Service {
 	friend class PriceList;		
 public:
 	Service(unsigned int, std::string, unsigned int);
-	void Wyswietl();
-	void ZmienCene(PriceList& cennik, unsigned int nowaCena);
+	void displayService();
+	void changePrice(PriceList& priceList, unsigned int newPrice);
 };
 
 class PriceList {
 	std::vector<Service> services;
 public:
-	void WyswietlCennik();
+	void displayPriceList();
 	void addService();
-	void UsunUsluge(unsigned int ID);
-	Service WybierzUsluge(unsigned int ID);
+	void removeService(unsigned int ID);
+	Service chooseService(unsigned int ID);
 
 };
 

@@ -14,18 +14,18 @@ void PriceList::addService() {
 
 	std::cout << "Podaj cene: ";
 	std::cin >> price;	
-	Service usluga(ID, name, price);
-	services.push_back(usluga);
+	Service service(ID, name, price);
+	services.push_back(service);
 }
 
-void PriceList::WyswietlCennik() {}
+void PriceList::displayPriceList() {}
 
-void PriceList::UsunUsluge(unsigned int ID) {}
+void PriceList::removeService(unsigned int ID) {}
 
 //Service PriceList::WybierzUsluge(unsigned int ID) {}
 
-void Service::ZmienCene(PriceList& cennik, unsigned int nowaCena) {}
+void Service::changePrice(PriceList& priceList, unsigned int newPrice) {}
 
-void Service::Wyswietl() {}
+void Service::displayService() {}
 
 Service::Service(unsigned int ID, std::string name, unsigned int price) : ID(ID), name(name), price(price) {}

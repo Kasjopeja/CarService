@@ -20,6 +20,8 @@ public:
 	void displayService();
 	void changePrice(PriceList& priceList, unsigned int newPrice);
 	unsigned int getIdService() const;
+	std::string getName() const;
+	unsigned int getPrice() const;
 };
 
 class PriceList {

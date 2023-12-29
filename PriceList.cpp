@@ -3,6 +3,12 @@
 unsigned int Service::getIdService() const {
 	return ID;
 }
+std::string Service::getName() const {
+	return name;
+}
+unsigned int Service::getPrice() const {
+	return price;
+}
 
 void PriceList::addService() {
 	std::cout << "Dodawanie nowej uslugi do cennika." << std::endl;
@@ -44,6 +50,8 @@ void PriceList::addService(const Service& usluga) {
 
 void Service::changePrice(PriceList& priceList, unsigned int newPrice) {}
 
-void Service::displayService() {}
+void Service::displayService() {
+	std::cout << "ID: " << ID << " Nazwa: " << name << " Cena: " << price << std::endl;
+}
 
 Service::Service(unsigned int ID, std::string name, unsigned int price) : ID(ID), name(name), price(price) {}

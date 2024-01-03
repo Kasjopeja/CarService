@@ -10,6 +10,8 @@ public:
     void addEvent(const Event& event);
     void removeEvent(int index);
     void displayEvents() const;
+
+    std::vector<Event> getEvents() const;
 private:
     std::vector<Event> events;
 };

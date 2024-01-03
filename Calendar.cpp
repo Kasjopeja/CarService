@@ -21,3 +21,7 @@ void Calendar::displayEvents() const {
     }
     std::cout << std::endl;
 }
+
+std::vector<Event> Calendar::getEvents() const {
+    return events;
+}

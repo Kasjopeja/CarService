@@ -57,7 +57,8 @@ void Service::changePrice(unsigned int price) {
 	this->price = price;
 }
 
-void PriceList::changePrice(unsigned int ID) {
+void PriceList::changePrice() {
+	unsigned int ID = selectedID;	//przypisanie zmiennej ID wybranej uslugi
 	for (Service& usluga : services) {
 		if (usluga.getIdService() == ID) {
 			unsigned int newPrice;
@@ -100,6 +101,7 @@ void PriceList::chooseService() {
 	for (Service& usluga : services) {
 		if (usluga.getIdService() == ID) {
 			std::cout << "Wybrano usluge o nr ID: " << ID << std::endl;
+			selectedID = ID;
 			return;
 		}
 	}

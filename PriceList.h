@@ -25,13 +25,14 @@ public:
 
 class PriceList {
 	std::vector<Service> services;
+	unsigned int selectedID = 0;	//zmienna do przechowywania ID wybranej uslugi
 public:
 	void displayPriceList();
 	void addService();
 	void removeService(unsigned int ID);
 	void chooseService();
 	void addService(const Service& usluga);
-	void changePrice(unsigned int ID);
+	void changePrice();
 };
 
 

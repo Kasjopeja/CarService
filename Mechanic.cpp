@@ -39,7 +39,7 @@ void Mechanic::manageCalendar() {
     int choice;
     do {
 
-        std::cout << "Wybierz akcje edycji kalendarza:\n";
+        std::cout << "EDYCJA KALENDARZA\n";
         std::cout << "1. Dodaj usterke\n";
         std::cout << "2. Usun usterke\n";
         std::cout << "3. Wyswietl kalendarz\n";

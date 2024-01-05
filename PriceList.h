@@ -14,7 +14,7 @@ class Service {
 	std::string name;
 	unsigned int price;
 	unsigned int ID;
-	friend class PriceList;		
+		
 public:
 	Service(unsigned int, std::string, unsigned int);
 	void displayService();

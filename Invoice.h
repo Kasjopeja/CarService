@@ -1,7 +1,3 @@
-//
-// Created by Jakub Wawrzyczek on 25/12/2023.
-//
-
 #ifndef CARSERVICE_INVOICE_H
 #define CARSERVICE_INVOICE_H
 

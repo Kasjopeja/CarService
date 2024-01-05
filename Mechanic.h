@@ -1,7 +1,3 @@
-//
-// Created by Jakub Wawrzyczek on 25/12/2023.
-//
-
 #ifndef CARSERVICE_MECHANIC_H
 #define CARSERVICE_MECHANIC_H
 
@@ -10,13 +6,12 @@
 #include "Warehouse.h"
 #include "Calendar.h"
 
-class Mechanic {
+class Mechanic : public User {
 public:
     Mechanic(const std::string& name);
     void manageWarehouse();
     void manageCalendar();
 private:
-    User user;
     Warehouse warehouse;
     Calendar calendar;
 };

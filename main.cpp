@@ -1,75 +1,99 @@
 #include <iostream>
+
 #include "User.h"
 #include "OfficeWorker.h"
 #include "Mechanic.h"
+#include "Menu.h"
+
+enum interface
+{
+    menuLogowanie = 0,
+    menuForPracownikBiura = 1,
+    menuForMechanik = 2
+};
 
 int main() {
-    std::string name;
-    std::cout << "Podaj imię: ";
-    std::cin >> name;
 
-    User user(name);
-    user.chooseRole();
+    Menu mainMenuLogowanie;
+    char key;
+    int maxOption;
+    int choice;
 
-    if (user.getRole() == "pracownikBiura") {
-        OfficeWorker officeWorker(name);
-        int choice;
-        do {
-            std::cout << "Wybierz akcję:\n";
-            std::cout << "1. Zarządzaj magazynem\n";
-            std::cout << "2. Zarządzaj cennikiem\n";
-            std::cout << "3. Wystaw fakturę\n";
-            std::cout << "0. Wyjście\n";
-            std::cout << "Wybór: ";
-            std::cin >> choice;
+    do {
+        maxOption = mainMenuLogowanie.showAllOpions(menuLogowanie);
+        key = mainMenuLogowanie.navigate(maxOption);
 
-            switch (choice) {
-                case 1:
-                    officeWorker.manageWarehouse();
-                    break;
-                case 2:
-                    officeWorker.managePriceList();
-                    break;
-                case 3:
-                    officeWorker.issueInvoice();
-                    break;
-                case 0:
-                    std::cout << "Koniec programu.\n";
-                    break;
-                default:
-                    std::cout << "Nieprawidłowy wybór.\n";
-                    break;
-            }
-        } while (choice != 0);
-    } else if (user.getRole() == "mechanik") {
-        Mechanic mechanic(name);
-        int choice;
-        do {
-            std::cout << "Wybierz akcję:\n";
-            std::cout << "1. Zarządzaj magazynem\n";
-            std::cout << "2. Zarządzaj kalendarzem\n";
-            std::cout << "0. Wyjście\n";
-            std::cout << "Wybór: ";
-            std::cin >> choice;
+    } while (!key);
+
+      std::string name;
+      std::cout << "\nPodaj imie: ";
+      std::cin >> name;
+
+
+    choice = mainMenuLogowanie.getSelectedOption();
+
+    if (choice == 1) {
+
+        while (choice != 4)
+        {
+            OfficeWorker officeWorker(name);
+            Menu mainMenuPracownikBiura;
+
+            do {
+                maxOption = mainMenuPracownikBiura.showAllOpions(menuForPracownikBiura);
+                key = mainMenuPracownikBiura.navigate(maxOption);
+
+            } while (!key);
+
+            choice = mainMenuPracownikBiura.getSelectedOption();
 
             switch (choice) {
-                case 1:
-                    mechanic.manageWarehouse();
-                    break;
-                case 2:
-                    mechanic.manageCalendar();
-                    break;
-                case 0:
-                    std::cout << "Koniec programu.\n";
-                    break;
-                default:
-                    std::cout << "Nieprawidłowy wybór.\n";
-                    break;
+            case 1:
+                officeWorker.manageWarehouse();
+                break;
+            case 2:
+                officeWorker.managePriceList();
+                break;
+            case 3:
+                officeWorker.issueInvoice();
+                break;
+            case 4:
+                std::cout << "Koniec programu.\n";
+                break;
             }
-        } while (choice != 0);
-    } else {
-        std::cout << "Nieprawidłowa rola.\n";
+
+
+        }
     }
+    
+    if (choice == 2) {
+        
+        while (choice != 3)
+        {
+            Mechanic mechanic(name);
+            Menu mainMenuMechanic;
 
-    return 0;
+            do {
+                maxOption = mainMenuMechanic.showAllOpions(menuForMechanik);
+                key = mainMenuMechanic.navigate(maxOption);
+
+            } while (!key);
+
+            choice = mainMenuMechanic.getSelectedOption();
+
+            switch (choice) {
+            case 1:
+                mechanic.manageWarehouse();
+                break;
+            case 2:
+                mechanic.manageCalendar();
+                break;
+            case 3:
+                std::cout << "Koniec programu.\n";
+                break;
+
+                return 0;
+            }
+        }
+    }
 }

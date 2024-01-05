@@ -1,6 +1,5 @@
 #include "OfficeWorker.h"
 #include <iostream>
-#include "Menu.h"
 
 OfficeWorker::OfficeWorker(const std::string& name) : User(name) {}
 
@@ -8,33 +7,27 @@ void OfficeWorker::manageWarehouse() {
     
     while (true)
     {
-        system("cls");
+        //system("cls");
 
         std::cout << "STAN MAGAZYNU " << std::endl;
+
+        std::cout << "1. Wyswietl stan magazynu\n";
+        std::cout << "2. Dodaj nowy element\n";
+        std::cout << "3. Edytuj istniejacy element\n";
+        std::cout << "4. Wyjscie\n";
 
         Warehouse warehouse;
         warehouse.Wczytaj();
 
-        Menu menuStanMagazynu;
-        char key;
-        int maxOption;
         int choice;
-        std::string ID;
-
-        do {
-            maxOption = menuStanMagazynu.showAllOpions(3);
-            key = menuStanMagazynu.navigate(maxOption);
-
-        } while (!key);
-
-        system("cls");
-        choice = menuStanMagazynu.getSelectedOption();
+        std::cin >> choice;
 
         switch (choice)
         {
         case 1:
+
             warehouse.Wyswietl();
-            std::cin >> ID;
+            std::cin.ignore();
             break;
         case 2:
             warehouse.Dodaj();

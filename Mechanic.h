@@ -8,12 +8,12 @@
 
 class Mechanic : public User {
 public:
-    Mechanic(const std::string& name);
+    Mechanic(const std::string& name);  // konstruktor obiektu klasy mechanik
     void manageWarehouse();
-    void manageCalendar();
+    void manageCalendar();  // metoda zarz¹dzaj¹ca kalendarzem
 private:
     Warehouse warehouse;
-    Calendar calendar;
+    Calendar calendar;  // tworzenie obiektu klasy calendar dla ka¿dego mechanika z osobna
 };
 
 

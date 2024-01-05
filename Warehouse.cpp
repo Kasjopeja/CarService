@@ -28,6 +28,10 @@ void Warehouse::Wczytaj()
 
 void Warehouse::Wyswietl()
 {
+	std::cout << "\n------------------------\n";
+	std::cout << "|     Stan magazynu    |\n";
+	std::cout << "------------------------\n\n";
+
 	for (int i = 0; i < this->stanMagazynu.size(); i++)
 	{
 		this->stanMagazynu[i].Wyswietl();

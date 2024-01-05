@@ -1,50 +1,50 @@
 #include "Warehouse.h"
 
-void Warehouse::Wczytaj()
+void Warehouse::loadData()
 {
-	std::vector <Parts> stanMagazynu;
+	std::vector <Part> warehouseState;
 
 	unsigned int ID;
 	std::string name;
 	unsigned int amount;
-	std::string linia;
+	std::string line;
 
-	std::ifstream plik("Magazyn.txt");
+	std::ifstream file("Magazyn.txt");
 
-	while (std::getline(plik, linia))
+	while (std::getline(file, line))
 	{
-		std::istringstream stream(linia);
+		std::istringstream stream(line);
 		stream >> ID >> name >> amount;
-		Parts part(ID, name, amount);
+		Part part(ID, name, amount);
 
-		stanMagazynu.push_back(part);
+		warehouseState.push_back(part);
 	}
 
-	plik.close();
+	file.close();
 
-	this->stanMagazynu = stanMagazynu;
+	this->warehouseState = warehouseState;
 
 }
 
-void Warehouse::Wyswietl()
+void Warehouse::displayPart()
 {
 	std::cout << "\n------------------------\n";
 	std::cout << "|     Stan magazynu    |\n";
 	std::cout << "------------------------\n\n";
 
-	for (int i = 0; i < this->stanMagazynu.size(); i++)
+	for (int i = 0; i < this->warehouseState.size(); i++)
 	{
-		this->stanMagazynu[i].Wyswietl();
+		this->warehouseState[i].displayPart();
 	}
 }
 
-void Warehouse::Dodaj()
+void Warehouse::addPart()
 {
 	std::cout << "DODAWANIE NOWEGO ELEMENTU \n\n";
 
-	std::ofstream plik("Magazyn.txt", std::ios::app);
+	std::ofstream file("Magazyn.txt", std::ios::app);
 
-	unsigned int ID = stanMagazynu.size() +1;
+	unsigned int ID = warehouseState.size() +1;
 	std::string name;
 	unsigned int amount;
 
@@ -53,14 +53,14 @@ void Warehouse::Dodaj()
 	std::cout << "Ilosc: ";
 	std::cin >> amount;
 
-	Parts part(ID, name, amount);
-	this->stanMagazynu.push_back(part);
+	Part part(ID, name, amount);
+	this->warehouseState.push_back(part);
 
-	plik << "\n" << ID << " " << name << " " << amount;
-	plik.close();
+	file << "\n" << ID << " " << name << " " << amount;
+	file.close();
 }
 
-void Warehouse::Edytuj()
+void Warehouse::editPart()
 {
 	std::cout << "EDYTOWANIE ISTNIEJACEGO ELEMENTU \n\n";
 
@@ -73,34 +73,34 @@ void Warehouse::Edytuj()
 	std::cout << "Nowa Ilosc: ";
 	std::cin >> amount;
 
-	stanMagazynu[ID - 1].Edytuj(amount);
+	warehouseState[ID - 1].editPart(amount);
 
-	std::ofstream plik("Magazyn.txt", std::ofstream::out | std::ofstream::trunc);
-	plik.close();
+	std::ofstream file("Magazyn.txt", std::ofstream::out | std::ofstream::trunc);
+	file.close();
 
-	for (int i = 0; i < stanMagazynu.size(); i++)
+	for (int i = 0; i < warehouseState.size(); i++)
 	{
-		stanMagazynu[i].Zapisz();
+		warehouseState[i].saveChangesToFIle();
 	}
 
 }
 
-void Parts::Wyswietl()
+void Part::displayPart()
 {
 	std::cout << "ID: " << ID << " \t\tNazwa: " << name << "\t\tIlosc: " << amount << std::endl;
 }
 
-void Parts::Edytuj(unsigned int newAmount)
+void Part::editPart(unsigned int newAmount)
 {
 	this->amount = newAmount;
 }
 
-void Parts::Zapisz() 
+void Part::saveChangesToFIle() 
 {
-	std::ofstream plik("Magazyn.txt", std::ios::app);
-	plik << ID << " " << name << " " << amount << "\n";
-	plik.close();
+	std::ofstream file("Magazyn.txt", std::ios::app);
+	file << ID << " " << name << " " << amount << "\n";
+	file.close();
 }
 
 
-Parts::Parts(unsigned int ID, std::string name, unsigned int amount) : ID(ID), name(name), amount(amount) {}
+Part::Part(unsigned int ID, std::string name, unsigned int amount) : ID(ID), name(name), amount(amount) {}

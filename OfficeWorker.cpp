@@ -17,7 +17,7 @@ void OfficeWorker::manageWarehouse() {
         std::cout << "4. Wyjscie\n";
 
         Warehouse warehouse;
-        warehouse.Wczytaj();
+        warehouse.loadData();
 
         int choice;
         std::cin >> choice;
@@ -26,14 +26,14 @@ void OfficeWorker::manageWarehouse() {
         {
         case 1:
 
-            warehouse.Wyswietl();
+            warehouse.displayPart();
             std::cin.ignore();
             break;
         case 2:
-            warehouse.Dodaj();
+            warehouse.addPart();
             break;
         case 3:
-            warehouse.Edytuj();
+            warehouse.editPart();
             break;
 
         case 4:

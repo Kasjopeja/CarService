@@ -7,7 +7,7 @@ Calendar calendar;
 void Mechanic::manageWarehouse() {
 
     Warehouse warehouse;
-    warehouse.Wczytaj();
+    warehouse.loadData();
 
     std::cout << "STAN MAGAZYNU \n" << std::endl;
 
@@ -21,12 +21,12 @@ void Mechanic::manageWarehouse() {
     switch (choice)
     {
     case 1:
-        warehouse.Wyswietl();
+        warehouse.displayPart();
         std::cin.ignore();
         break;
 
     case 2:
-        warehouse.Edytuj();
+        warehouse.editPart();
         break;
     case 3:
         return;

@@ -7,13 +7,13 @@
 
 class Calendar {
 public:
-    void addEvent(const Event& event);
-    void removeEvent(int index);
-    void displayEvents() const;
+    void addEvent(const Event& event);  // dodawanie usterki do kalendarza
+    void removeEvent(int index);    // usuwanie usterki z kalendarza
+    void displayEvents() const; // wyświetlanie kalendarza
 
-    std::vector<Event> getEvents() const;
+    std::vector<Event> getEvents() const;   // getter do wyciągania usterek (są w polu prywatnym)
 private:
-    std::vector<Event> events;
+    std::vector<Event> events;  // usterki w vectorze
 };
 
 

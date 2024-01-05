@@ -1,5 +1,4 @@
 #include "Mechanic.h"
-#include "Menu.h"
 #include <iostream>
 
 Mechanic::Mechanic(const std::string& name) : User(name) {}
@@ -7,33 +6,23 @@ Calendar calendar;
 
 void Mechanic::manageWarehouse() {
 
-    system("cls");
-
-    std::cout << "STAN MAGAZYNU " << std::endl;
-
     Warehouse warehouse;
     warehouse.Wczytaj();
 
-    Menu menuStanMagazynu;
-    char key;
-    int maxOption;
+    std::cout << "STAN MAGAZYNU \n" << std::endl;
+
+    std::cout << "1. Wyswietl stan magazynu\n";
+    std::cout << "2. Edytuj istniejacy element\n";
+    std::cout << "3. Wyjscie\n";
+
     int choice;
-    std::string ID;
-
-    do {
-        maxOption = menuStanMagazynu.showAllOpions(4);
-        key = menuStanMagazynu.navigate(maxOption);
-
-    } while (!key);
-
-    system("cls");
-    choice = menuStanMagazynu.getSelectedOption();
+    std::cin >> choice;
 
     switch (choice)
     {
     case 1:
         warehouse.Wyswietl();
-        std::cin >> ID;
+        std::cin.ignore();
         break;
 
     case 2:
@@ -46,55 +35,59 @@ void Mechanic::manageWarehouse() {
 
 void Mechanic::manageCalendar() {
 
+    // proste menu
     int choice;
     do {
 
-        std::cout << "Wybierz akcje edycji kalendarza:\n";
+        std::cout << "EDYCJA KALENDARZA\n";
         std::cout << "1. Dodaj usterke\n";
         std::cout << "2. Usun usterke\n";
         std::cout << "3. Wyswietl kalendarz\n";
         std::cout << "0. Wyjscie\n";
         std::cout << "Wybor: ";
         std::cin >> choice;
-        system("cls");
 
         switch (choice) {
-            case 1: {
-                // Dodawanie wydarzenia
-                std::string type, reportDate, plannedDate;
-                std::cin.ignore();
-                std::cout << "Podaj typ usterki: ";
-                std::getline(std::cin, type);
-                std::cout << "Podaj datę zgłoszenia (dd-mm-rrrr): ";
-                std::cin >> reportDate;
-                std::cout << "Podaj planowaną datę wykonania (dd-mm-rrrr): ";
-                std::cin >> plannedDate;
+        case 1: {
+            // Dodawanie wydarzenia
+            std::string type, reportDate, plannedDate, status;  // inicjowanie zmiennych
+            std::cin.ignore();
+            std::cout << "Podaj typ usterki: ";
+            std::getline(std::cin, type);
+            std::cout << "Podaj datę zgłoszenia (dd-mm-rrrr): ";
+            std::cin >> reportDate;
+            std::cout << "Podaj planowaną datę wykonania (dd-mm-rrrr): ";
+            std::cin >> plannedDate;
+            std::cin.ignore();
+            std::cout << "Podaj aktualny status naprawy: ";
+            std::getline(std::cin, status);
 
-                Event event(type, reportDate, plannedDate);
-                calendar.addEvent(event);
+            // użycie konstruktora i wywołanie metody, która dodaje obiekt do vectora w kalendarzu
+            Event event(type, reportDate, plannedDate, status);
+            calendar.addEvent(event);
 
-                std::cout << "Dodano wydarzenie do kalendarza.\n";
-                break;
-            }
-            case 2: {
-                // Usuwanie wydarzenia
-                int index;
-                std::cout << "Podaj numer wydarzenia do usunięcia: ";
-                std::cin >> index;
-                calendar.removeEvent(index - 1); // -1, bo numerowanie od 1 dla użytkownika
-                std::cout << "Usunięto wydarzenie z kalendarza.\n";
-                break;
-            }
-            case 3:
-                // Wyświetlanie wydarzeń
-                calendar.displayEvents();
-                break;
-            case 0:
-                std::cout << "Koniec edycji kalendarza.\n\n";
-                break;
-            default:
-                std::cout << "Nieprawidłowy wybór.\n";
-                break;
+            std::cout << "Dodano wydarzenie do kalendarza.\n";
+            break;
+        }
+        case 2: {
+            // Usuwanie wydarzenia
+            int index;
+            std::cout << "Podaj numer wydarzenia do usunięcia: ";
+            std::cin >> index;
+            calendar.removeEvent(index - 1); // -1, bo numerowanie od 1 dla użytkownika
+            std::cout << "Usunięto wydarzenie z kalendarza.\n";
+            break;
+        }
+        case 3:
+            // Wyświetlanie wydarzeń
+            calendar.displayEvents();
+            break;
+        case 0:
+            std::cout << "Koniec edycji kalendarza.\n\n";
+            break;
+        default:
+            std::cout << "Nieprawidłowy wybór.\n";
+            break;
         }
     } while (choice != 0);
 }

@@ -14,18 +14,26 @@ unsigned int Service::getPrice() const {
 //dodawanie nowej uslugi do cennika
 void PriceList::addService() {
 	std::cout << "Dodawanie nowej uslugi do cennika." << std::endl;
+
+	//deklaracja zmiennych
 	unsigned int ID;
 	std::string name;
 	unsigned int price;
+
+	//pobieranie ID od uzytkownika
 	std::cout << "Podaj ID: ";
 	std::cin >> ID;
 
+	//pobieranie nazwy od uzytkownika
 	std::cout << "Podaj nazwe: ";
-	std::cin.ignore();
+	std::cin.ignore();				
 	std::getline(std::cin, name);
 
+	//pobieranie ceny od uzytkownika
 	std::cout << "Podaj cene: ";
 	std::cin >> price;
+
+	//tworzenie nowego obiektu uslugi i dodawanie go do listy us³ug
 	Service service(ID, name, price);
 	services.push_back(service);
 }
@@ -34,12 +42,14 @@ void PriceList::addService() {
 void PriceList::displayPriceList() {
 	std::cout << "Cennik uslug:" << std::endl;
 	for (Service& usluga : services) {
-		usluga.displayService();
+		usluga.displayService();		//wyswietlanie uslugi
 	}
 }
 
 //usuwanie uslugi z cennika
 void PriceList::removeService(unsigned int ID) {
+
+	//szukanie uslugi o podanym ID 
 	auto it = std::remove_if(services.begin(), services.end(),
 		[ID](const Service& usluga) { return usluga.getIdService() == ID; });
 

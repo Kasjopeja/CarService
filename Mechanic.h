@@ -1,20 +1,25 @@
 #ifndef CARSERVICE_MECHANIC_H
 #define CARSERVICE_MECHANIC_H
 
-
 #include "User.h"
 #include "Warehouse.h"
 #include "Calendar.h"
 
+// Klasa reprezentująca mechanika odpowiedzialnego za zarządzanie magazynem i kalendarzem napraw.
 class Mechanic : public User {
 public:
-    Mechanic(const std::string& name);  // konstruktor obiektu klasy mechanik
-    void manageWarehouse();
-    void manageCalendar();  // metoda zarz�dzaj�ca kalendarzem
-private:
-    Warehouse warehouse;
-    Calendar calendar;  // tworzenie obiektu klasy calendar dla ka�dego mechanika z osobna
-};
+    // Konstruktor klasy Mechanic inicjujący obiekt klasy User oraz kalendarz.
+    Mechanic(const std::string& name);
 
+    // Metoda zarządzająca magazynem, umożliwiająca wyświetlanie i edycję stanu.
+    void manageWarehouse();
+
+    // Metoda zarządzająca kalendarzem, umożliwiająca dodawanie, usuwanie i wyświetlanie napraw.
+    void manageCalendar();
+
+private:
+    Warehouse warehouse;    // Obiekt klasy Warehouse reprezentujący magazyn.
+    Calendar calendar;      // Obiekt klasy Calendar reprezentujący kalendarz napraw.
+};
 
 #endif //CARSERVICE_MECHANIC_H

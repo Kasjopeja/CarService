@@ -1,5 +1,6 @@
 #include "PriceList.h"
 
+//zwracanie ID uslugi, nazwy i ceny
 unsigned int Service::getIdService() const {
 	return ID;
 }
@@ -10,6 +11,7 @@ unsigned int Service::getPrice() const {
 	return price;
 }
 
+//dodawanie nowej uslugi do cennika
 void PriceList::addService() {
 	std::cout << "Dodawanie nowej uslugi do cennika." << std::endl;
 	unsigned int ID;
@@ -28,6 +30,7 @@ void PriceList::addService() {
 	services.push_back(service);
 }
 
+//wyswietlanie cennika
 void PriceList::displayPriceList() {
 	std::cout << "Cennik uslug:" << std::endl;
 	for (Service& usluga : services) {
@@ -35,7 +38,7 @@ void PriceList::displayPriceList() {
 	}
 }
 
-
+//usuwanie uslugi z cennika
 void PriceList::removeService(unsigned int ID) {
 	auto it = std::remove_if(services.begin(), services.end(),
 		[ID](const Service& usluga) { return usluga.getIdService() == ID; });
@@ -57,6 +60,7 @@ void Service::changePrice(unsigned int price) {
 	this->price = price;
 }
 
+//zmiana ceny uslugi
 void PriceList::changePrice() {
 	unsigned int ID = selectedID;	//przypisanie zmiennej ID wybranej uslugi
 	for (Service& usluga : services) {
@@ -84,6 +88,7 @@ void Service::displayService() {
 	std::cout << "ID: " << ID << ", Nazwa: " << name << ", Cena: " << price << std::endl;
 }
 
+//wybor uslugi do modyfikacji	
 void PriceList::chooseService() {
 	displayPriceList();
 

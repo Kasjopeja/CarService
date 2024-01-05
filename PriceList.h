@@ -10,7 +10,7 @@
 class PriceList;
 
 class Service {
-	std::string name;
+	std::string name;		
 	unsigned int price;
 	unsigned int ID;
 	friend class PriceList;		

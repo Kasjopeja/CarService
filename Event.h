@@ -8,6 +8,7 @@
 class Event {
 public:
     // Konstruktor klasy Event inicjujący dane dotyczące naprawy.
+    // Przyjmuje argumenty, które są stringami.
     Event(const std::string& type, const std::string& reportDate, const std::string& plannedDate, const std::string& status);
 
     // Metoda wyświetlająca informacje o konkretnym wydarzeniu (naprawie).

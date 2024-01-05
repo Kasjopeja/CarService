@@ -1,11 +1,12 @@
 #include "Calendar.h"
 
-// Metoda dodająca nowe wydarzenie do kalendarza.
+// Metoda dodająca nowe wydarzenie do kalendarza. Jako argument przyjmuje wskaźnik na obiekt klasy Event.
 void Calendar::addEvent(const Event& event) {
     events.push_back(event);    // Dodaje obiekt 'event' do wektora przechowującego usterki
 }
 
-// Metoda usuwająca wydarzenie z kalendarza na podstawie indeksu.
+// Metoda usuwająca wydarzenie z kalendarza na podstawie podanego indeksu.
+// Indeks jest liczbą całkowitą większą bądź równą 1.
 void Calendar::removeEvent(int index) {
     // Sprawdzenie, czy podane przez użytkownika ID nie jest poza zakresem
     if (index >= 0 && index < events.size()) {

@@ -7,8 +7,7 @@ void OfficeWorker::manageWarehouse() {
     
     while (true)
     {
-        //system("cls");
-
+        // wyswietlanie menu wyboru
         std::cout << "STAN MAGAZYNU " << std::endl;
 
         std::cout << "1. Wyswietl stan magazynu\n";
@@ -16,6 +15,7 @@ void OfficeWorker::manageWarehouse() {
         std::cout << "3. Edytuj istniejacy element\n";
         std::cout << "4. Wyjscie\n";
 
+        // zaladowanie informacji o stanie magazynu do programu
         Warehouse warehouse;
         warehouse.loadData();
 
@@ -25,14 +25,16 @@ void OfficeWorker::manageWarehouse() {
         switch (choice)
         {
         case 1:
-
+            // wysiwtlanie informacji o stanie magazynu
             warehouse.displayPart();
             std::cin.ignore();
             break;
         case 2:
+            // dodawanie nowego elementu do magazynu - towrzenie obiektu klasy Part
             warehouse.addPart();
             break;
         case 3:
+            // edytowanie informacji o stanie magazynu - konkretnym obieckie klasy Part 
             warehouse.editPart();
             break;
 

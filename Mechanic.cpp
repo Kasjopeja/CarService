@@ -6,9 +6,11 @@ Calendar calendar;
 
 void Mechanic::manageWarehouse() {
 
+    // zaladowanie informacji o stanie magazynu do programu
     Warehouse warehouse;
     warehouse.loadData();
 
+    // wyswietlanie menu wyboru
     std::cout << "STAN MAGAZYNU \n" << std::endl;
 
     std::cout << "1. Wyswietl stan magazynu\n";
@@ -20,12 +22,14 @@ void Mechanic::manageWarehouse() {
 
     switch (choice)
     {
-    case 1:
+    case 1: 
+        // wysiwtlanie informacji o stanie magazynu
         warehouse.displayPart();
         std::cin.ignore();
         break;
 
     case 2:
+        // edytowanie informacji o stanie magazynu - konkretnym obieckie klasy Part 
         warehouse.editPart();
         break;
     case 3:

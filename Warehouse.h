@@ -8,7 +8,7 @@
 #include <string>
 #include <sstream>
 
-class Parts
+class Part
 {
     unsigned int ID;
     std::string name;
@@ -16,23 +16,23 @@ class Parts
 
 public:
 
-    Parts(unsigned int, std::string, unsigned int);
-    void Wyswietl();
-    void Edytuj(unsigned int);
-    void Zapisz();
+    Part(unsigned int, std::string, unsigned int);
+    void displayPart();
+    void editPart(unsigned int);
+    void saveChangesToFIle();
 };
 
 
 class Warehouse {
 
-    std::vector <Parts> stanMagazynu;
+    std::vector <Part> warehouseState;
 
 public:
 
-    void Wczytaj();
-    void Wyswietl();
-    void Edytuj();
-    void Dodaj();
+    void loadData();
+    void displayPart();
+    void editPart();
+    void addPart();
 };
 
 

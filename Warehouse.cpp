@@ -1,106 +1,112 @@
 #include "Warehouse.h"
 
-void Warehouse::Wczytaj()
+// zaladowanie danych z pliku
+void Warehouse::loadData()
 {
-	std::vector <Parts> stanMagazynu;
+	std::vector <Part> warehouseState; // przechowywanie wszystkich obiektow klasy Part
 
-	unsigned int ID;
-	std::string name;
-	unsigned int amount;
-	std::string linia;
+	unsigned int ID, amount;
+	std::string name, line;
 
-	std::ifstream plik("Magazyn.txt");
+	std::ifstream file("Magazyn.txt");
 
-	while (std::getline(plik, linia))
+	while (std::getline(file, line)) // czytanie pliku linia po linii
 	{
-		std::istringstream stream(linia);
+		std::istringstream stream(line);
 		stream >> ID >> name >> amount;
-		Parts part(ID, name, amount);
+		Part part(ID, name, amount); // stowrzenie obiektu klasy Part z odczytanych danych
 
-		stanMagazynu.push_back(part);
+		warehouseState.push_back(part); // dodanie utworzoego obiektu klasy Part do vector 
 	}
 
-	plik.close();
+	file.close();
 
-	this->stanMagazynu = stanMagazynu;
+	this->warehouseState = warehouseState;
 
 }
 
-void Warehouse::Wyswietl()
+void Warehouse::displayPart()
 {
 	std::cout << "\n------------------------\n";
 	std::cout << "|     Stan magazynu    |\n";
 	std::cout << "------------------------\n\n";
 
-	for (int i = 0; i < this->stanMagazynu.size(); i++)
-	{
-		this->stanMagazynu[i].Wyswietl();
+	for (int i = 0; i < this->warehouseState.size(); i++)
+	{  // wyswietlanie informacji o kazdym obieckie zawartym w vector warehouseState
+		this->warehouseState[i].displayPart();
 	}
 }
 
-void Warehouse::Dodaj()
+// dodawanie nowego wpisu
+void Warehouse::addPart()
 {
 	std::cout << "DODAWANIE NOWEGO ELEMENTU \n\n";
 
-	std::ofstream plik("Magazyn.txt", std::ios::app);
+	std::ofstream file("Magazyn.txt", std::ios::app); // otwieranie pliku zawierajacego informacje o stanie magazynu
 
-	unsigned int ID = stanMagazynu.size() +1;
+	unsigned int ID = warehouseState.size() +1;
 	std::string name;
 	unsigned int amount;
 
+	// urzystkownik podaje informacje potrzebne do utworzenia npwego obiektu
 	std::cout << "Nazwa: ";
 	std::cin >> name;
 	std::cout << "Ilosc: ";
 	std::cin >> amount;
 
-	Parts part(ID, name, amount);
-	this->stanMagazynu.push_back(part);
+	Part part(ID, name, amount);
+	this->warehouseState.push_back(part); // aktualizowanie vectiora warehouseState
 
-	plik << "\n" << ID << " " << name << " " << amount;
-	plik.close();
+	file << "\n" << ID << " " << name << " " << amount; // aktualizowanie informacji zawartych w pliku
+	file.close();
 }
 
-void Warehouse::Edytuj()
+// edycja inormacji o istniejacym wpisie
+void Warehouse::editPart()
 {
 	std::cout << "EDYTOWANIE ISTNIEJACEGO ELEMENTU \n\n";
 
 	unsigned int amount;
 	unsigned int ID;
 
+	// uzytkownik wybiera który obiekt chce edytowaæ i jak on ma siê zmieniæ
 	std::cout << "ID elementu do edycji: ";
 	std::cin >> ID;
 	std::cout << std::endl;
 	std::cout << "Nowa Ilosc: ";
 	std::cin >> amount;
 
-	stanMagazynu[ID - 1].Edytuj(amount);
+	// zapisywanie zmian do vectiora
+	warehouseState[ID - 1].editPart(amount);
 
-	std::ofstream plik("Magazyn.txt", std::ofstream::out | std::ofstream::trunc);
-	plik.close();
-
-	for (int i = 0; i < stanMagazynu.size(); i++)
+	//zapisywanie zmian do pliku
+	std::ofstream file("Magazyn.txt", std::ofstream::out | std::ofstream::trunc);
+	file.close();
+	for (int i = 0; i < warehouseState.size(); i++)
 	{
-		stanMagazynu[i].Zapisz();
+		warehouseState[i].saveChangesToFIle();
 	}
 
 }
 
-void Parts::Wyswietl()
+void Part::displayPart()
 {
+	// wyswietlanie informacji o pojedynczym obiekcie klasy Part
 	std::cout << "ID: " << ID << " \t\tNazwa: " << name << "\t\tIlosc: " << amount << std::endl;
 }
 
-void Parts::Edytuj(unsigned int newAmount)
+void Part::editPart(unsigned int newAmount)
 {
 	this->amount = newAmount;
 }
 
-void Parts::Zapisz() 
+void Part::saveChangesToFIle() 
 {
-	std::ofstream plik("Magazyn.txt", std::ios::app);
-	plik << ID << " " << name << " " << amount << "\n";
-	plik.close();
+	// zapisywanie zmian obiektu klasy Part do pliku
+	std::ofstream file("Magazyn.txt", std::ios::app);
+	file << ID << " " << name << " " << amount << "\n";
+	file.close();
 }
 
 
-Parts::Parts(unsigned int ID, std::string name, unsigned int amount) : ID(ID), name(name), amount(amount) {}
+Part::Part(unsigned int ID, std::string name, unsigned int amount) : ID(ID), name(name), amount(amount) {}

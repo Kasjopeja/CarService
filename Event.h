@@ -6,12 +6,13 @@
 
 class Event {
 public:
-    Event(const std::string& type, const std::string& reportDate, const std::string& plannedDate);
-    void displayEvent() const;
+    Event(const std::string& type, const std::string& reportDate, const std::string& plannedDate, const std::string& status);  // konstruktor
+    void displayEvent() const;  // wyświetlanie każdego z pól z pojedynczego eventu
 private:
-    std::string type;
-    std::string reportDate;
-    std::string plannedDate;
+    std::string type;   // rodzaj zlecenia
+    std::string reportDate; // data zgłoszenia
+    std::string plannedDate;    // planowana data wykonania
+    std::string status; // status zlecenia
 };
 
 

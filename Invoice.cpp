@@ -1,21 +1,54 @@
-#include "Invoice.h"
+#include <iostream>
+#include <fstream>
 #include <string>
 
-void Invoice::addClient() {
-	std::string name;
-	std::string lastname;
-	int phoneNumber;
-	std::string mailAdress;
+struct Client {
+    std::string name;
+    std::string lastname;
+    std::string mailAdress;
+    std::string phoneNumber;
+};
 
-	std::cout << "Imie klienta: ";
-	std::cin >> name;
-	std::cout <<" " << "Nazwisko kleinta: ";
-	std::cin >> lastname;
-	std::cout<< std::endl << "Numer telefonu klient: ";
-	std::cin >> phoneNumber;
-	std::cout << std::endl << "Adres mail klienta: ";
-	std::cin >> mailAdress;
+void addClient(const Client& client, std::ofstream& invoiceFile) {
+    invoiceFile << "Imiê: " << client.name << std::endl;
+    invoiceFile << "Nazwisko: " << client.lastname << std::endl;
+    invoiceFile << "Adres mailowy: " << client.mailAdress << std::endl;
+    invoiceFile << "Numer telefonu: " << client.phoneNumber << std::endl;
+    invoiceFile << "-------------------------" << std::endl;
+}
 
-	//Jutro rano poprawie, zeby to wszytko bylo zapisywane do pliku, teraz ide spac xoxo
+int main() {
+    Client client;
 
+    // Wprowadzanie dane klienta
+    std::cout << "Podaj imiê klienta: ";
+    std::getline(std::cin, client.name);
+
+    std::cout << "Podaj nazwisko klienta: ";
+    std::getline(std::cin, client.lastname);
+
+    std::cout << "Podaj adres mailowy klienta: ";
+    std::getline(std::cin, client.mailAdress);
+
+    std::cout << "Podaj numer telefonu klienta: ";
+    std::getline(std::cin, client.phoneNumber);
+
+    // Otwieranie plik do zapisu
+    std::ofstream plik("faktura.txt", std::ios::app);
+
+    if (plik.is_open()) {
+        // Dodawanie danych klienta do faktury
+        addClient(client, plik);
+
+        // Zamknanie plik
+        plik.close();
+
+        std::cout << "Dane klienta dodane do faktury i zapisane do pliku." << std::endl;
+    }
+    else {
+        std::cerr << "B³¹d: Nie uda³o siê otworzyæ pliku do zapisu." << std::endl;
+        return 1;
+    }
+
+    return 0;
 }

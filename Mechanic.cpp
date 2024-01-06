@@ -2,7 +2,7 @@
 #include <iostream>
 
 // Konstruktor klasy Mechanic inicjujący obiekt klasy User oraz kalendarz.
-Mechanic::Mechanic(const std::string& name) : User(name) {}
+Mechanic::Mechanic(const std::string& name, std::string& role) : User(name, role) {}
 Calendar calendar;
 
 // Metoda zarządzająca magazynem, umożliwiająca wyświetlanie i edycję stanu.

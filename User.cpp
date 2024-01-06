@@ -1,12 +1,8 @@
 #include "User.h"
 #include <iostream>
 
-User::User(const std::string& name) : name(name) {}
+User::User(const std::string& name, std::string& role) : name(name), role(role) {}
 
-void User::chooseRole() {
-    std::cout << "Wybierz rolę (mechanik/pracownikBiura): ";
-    std::cin >> role;
-}
 
 std::string User::getRole() const {
     return role;

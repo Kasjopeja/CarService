@@ -1,7 +1,7 @@
 #include "OfficeWorker.h"
 #include <iostream>
 
-OfficeWorker::OfficeWorker(const std::string& name) : User(name) {}
+OfficeWorker::OfficeWorker(const std::string& name, std::string& role) : User(name, role) {}
 
 void OfficeWorker::manageWarehouse() {
     

@@ -9,7 +9,7 @@
 class Mechanic : public User {
 public:
     // Konstruktor klasy Mechanic inicjujący obiekt klasy User oraz kalendarz.
-    Mechanic(const std::string& name);
+    Mechanic(const std::string& name, std::string& role);
 
     // Metoda zarządzająca magazynem, umożliwiająca wyświetlanie i edycję stanu.
     void manageWarehouse();

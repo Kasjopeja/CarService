@@ -49,7 +49,7 @@ void PriceList::displayPriceList() {
 //usuwanie uslugi z cennika
 void PriceList::removeService(unsigned int ID) {
 
-	//szukanie uslugi o podanym ID 
+	//szukanie uslugi o podanym ID, przenoszenie jej na koniec i usuwanie
 	auto it = std::remove_if(services.begin(), services.end(),
 		[ID](const Service& usluga) { return usluga.getIdService() == ID; });
 
@@ -61,11 +61,12 @@ void PriceList::removeService(unsigned int ID) {
 		std::cout << "Nie znaleziono uslugi o ID " << ID << " w cenniku." << std::endl;
 	}
 }
-
+//dodawanie istniejacej uslugi do cennika
 void PriceList::addService(const Service& usluga) {
 	services.push_back(usluga);
 }
 
+//aktualizacja ceny uslugi
 void Service::changePrice(unsigned int price) {
 	this->price = price;
 }
@@ -73,19 +74,22 @@ void Service::changePrice(unsigned int price) {
 //zmiana ceny uslugi
 void PriceList::changePrice() {
 	unsigned int ID = selectedID;	//przypisanie zmiennej ID wybranej uslugi
+
+	//szukanie uslugi o podanym ID 
 	for (Service& usluga : services) {
 		if (usluga.getIdService() == ID) {
 			unsigned int newPrice;
-			std::cout << "Wprowadz nowa cene dla uslugi o ID " << ID << ": ";
+			std::cout << "Wprowadz nowa cene dla uslugi o ID " << ID << ": ";	//pobieranie nowej ceny od uzytkownika
 			std::cin >> newPrice;
 
+			//sprawdzanie poprawnosci danych wejsciowych
 			if (std::cin.fail()) {
 				std::cerr << "Blad: Nieprawidlowe dane wejsciowe." << std::endl;
 				std::cin.clear(); 
 				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
 				return;
 			}
-
+			//zmiana ceny uslugi
 			usluga.changePrice(newPrice);
 			std::cout << "Zmieniono cene uslugi o ID " << ID << " na " << newPrice << std::endl;
 			return;
@@ -94,6 +98,7 @@ void PriceList::changePrice() {
 	std::cout << "Nie znaleziono uslugi o ID " << ID << std::endl;
 }
 
+//wyswietlanie uslugi
 void Service::displayService() {
 	std::cout << "ID: " << ID << ", Nazwa: " << name << ", Cena: " << price << std::endl;
 }
@@ -106,13 +111,14 @@ void PriceList::chooseService() {
 	std::cout << "Wprowadz ID uslugi, ktora chcesz modyfikowac: ";
 	std::cin >> ID;
 
+	//sprawdzanie poprawnosci danych wejsciowych
 	if (std::cin.fail()) {
 		std::cerr << "Blad: Nieprawidlowe dane wejsciowe." << std::endl;
 		std::cin.clear();
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		return;
 	}
-
+	//szukanie uslugi o podanym ID
 	for (Service& usluga : services) {
 		if (usluga.getIdService() == ID) {
 			std::cout << "Wybrano usluge o nr ID: " << ID << std::endl;
@@ -123,4 +129,5 @@ void PriceList::chooseService() {
 	std::cout << "Nie znaleziono uslugi o ID " << ID << std::endl;
 }
 
+//konstruktor
 Service::Service(unsigned int ID, std::string name, unsigned int price) : ID(ID), name(name), price(price) {}

@@ -69,14 +69,24 @@ void OfficeWorker::managePriceList() {
         system("cls");
         switch (choice) {
 		case 1:
+            priceList.displayPriceList();
 			break;
 		case 2:
+            priceList.addService();
 			break;
 		case 3:
+            priceList.displayPriceList();
+            unsigned int ID;
+            std::cout << "Wprowadz ID uslugi, ktora chcesz usunac: ";
+            std::cin >> ID;
+            priceList.removeService(ID);
 			break;
 		case 4:
+            priceList.chooseService();
+            priceList.changePrice();
 			break;
 		case 0:
+            std::cout<<"Wyjscie z zarzadzania cennikiem."<<std::endl;
 			break;
 		default:
 			std::cout << "Nie ma takiej opcji w menu." << std::endl;

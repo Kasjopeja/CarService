@@ -7,6 +7,7 @@
 #include <fstream>
 #include <string>
 #include <sstream>
+#include "Invoice.h"
 
 class Parts
 {
@@ -20,6 +21,7 @@ public:
     void Wyswietl();
     void Edytuj(unsigned int);
     void Zapisz();
+
 };
 
 

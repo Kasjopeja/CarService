@@ -13,10 +13,12 @@ class Invoice {
     std::vector<Event> events;  // zlecenie w vectorze
 
 public:
-    std::vector<Event> getEvents() const;   // getter do wyciągania zleceń
+
+    
+    void addPartsData(const Parts& parts, unsigned int userEnteredID);  //dodawanie czesci do faktury
+   
 
     void addEvent(const Event& event);  //dodawanie zlecenie do faktury
-    void addParts(Parts& parts);    //dodawanie czesci do faktury
     void addClient(const Client& client, std::ofstream& invoiceFile);   //dodaje dane klienta
     void Print(const std::string& fileName);   //drukowanie faktury
 };

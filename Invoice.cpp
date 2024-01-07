@@ -20,14 +20,33 @@ void addClient(const Client& client, std::ofstream& invoiceFile) {
     invoiceFile << "-------------------------" << std::endl;
 }
 
-void Invoice::addPartsData(const Parts& parts) {
-    std::ofstream invoiceFile("invoice.txt", std::ios::app);
+void Invoice::addPartsData(const Parts& parts, unsigned int targetID) {
+    if (parts.ID == targetID) {
+        // Tutaj mo¿esz wykorzystaæ przekazane dane wed³ug potrzeb
+        std::cout << "ID: " << parts.ID << std::endl;
+        std::cout << "Nazwa: " << parts.name << std::endl;
+        std::cout << "Iloœæ: " << parts.amount << std::endl;
 
-    if (invoiceFile.is_open()) {
-        invoiceFile << "ID: " << parts.ID << std::endl;
-        invoiceFile << "Name: " << parts.name << std::endl;
-        invoiceFile << "Amount: " << parts.amount << std::endl;
-        invoiceFile << "-------------------------" << std::endl;
+        // Mo¿esz teraz u¿yæ tych danych w klasie Invoice do dalszej obróbki
+
+        // Otwórz plik do zapisu
+        std::ofstream invoiceFile("invoice.txt", std::ios::app);
+
+        if (file.is_open()) {
+            // Zapisz dane do pliku
+            file << "ID: " << parts.ID << std::endl;
+            file << "Nazwa: " << parts.name << std::endl;
+            file << "Iloœæ: " << parts.amount << std::endl;
+            file << "-------------------------" << std::endl;
+
+            // Zamknij plik
+            file.close();
+
+            std::cout << "Dane zapisane do pliku: invoice.txt" << std::endl;
+        }
+        else {
+            std::cerr << "B³¹d: Nie uda³o siê otworzyæ pliku do zapisu." << std::endl;
+        }
     }
 }
 

@@ -81,10 +81,10 @@ void OfficeWorker::issueInvoice() {
             std::cin.ignore();
             break;
         case 2:
-            invoice.addEvent();
+        //    invoice.addEvent();
             break;
         case 3:
-            invoice.addPartsData();
+        //    invoice.addPartsData();
             break;
 
         case 4:

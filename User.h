@@ -6,8 +6,7 @@
 
 class User {
 public:
-    User(const std::string& name);
-    void chooseRole();
+    User(const std::string& name, std::string& role);
     std::string getRole() const;
 private:
     std::string name;

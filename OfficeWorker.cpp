@@ -49,6 +49,39 @@ void OfficeWorker::managePriceList() {
 }
 
 void OfficeWorker::issueInvoice() {
-    std::cout << "Wystawianie faktury\n";
+    while (true)
+    {
+        //system("cls");
+
+        std::cout << "WYSTAWIANIE FAKTURY " << std::endl;
+
+        std::cout << "1. Dodanie klienta do faktury" << std::endl;
+        std::cout << "2. Dodaj zlecenia do faktury" << std::endl;
+        std::cout << "3. Dodanie części do faktury" << std::endl;
+        std::cout << "4. Wyjscie" << std::endl;
+
+        Invoice invoice;
+
+        int choice;
+        std::cin >> choice;
+
+        switch (choice)
+        {
+        case 1:
+
+            invoice.addClient();
+            std::cin.ignore();
+            break;
+        case 2:
+            invoice.addEvent();
+            break;
+        case 3:
+            invoice.addPartsData();
+            break;
+
+        case 4:
+            return;
+        }
+    }
     // implementacja
 }

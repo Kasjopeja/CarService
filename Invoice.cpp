@@ -30,7 +30,7 @@ void Invoice::addPartsData(const Parts& parts, unsigned int targetID) {
         // Mo¿esz teraz u¿yæ tych danych w klasie Invoice do dalszej obróbki
 
         // Otwórz plik do zapisu
-        std::ofstream invoiceFile("invoice.txt", std::ios::app);
+        std::ofstream invoiceFilebbgb("invoice.txt", std::ios::app);
 
         if (file.is_open()) {
             // Zapisz dane do pliku

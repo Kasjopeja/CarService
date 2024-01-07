@@ -8,7 +8,7 @@
 
 class OfficeWorker : public User{
 public:
-    OfficeWorker(const std::string& name);
+    OfficeWorker(const std::string& name, std::string& role);
     void manageWarehouse();
     void managePriceList();
     void issueInvoice();

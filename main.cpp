@@ -10,7 +10,8 @@ void officeWorkerMenu(std::string name)
 
     while (choice != 4)
     {
-        OfficeWorker officeWorker(name);
+        std::string role = "pracownik biura";
+        OfficeWorker officeWorker(name, role);
 
         std::cout << "MENU GLOWNE:\n \n";
 
@@ -45,7 +46,8 @@ void mechanicMenu(std::string name)
 
     while (choice != 3)
     {
-        Mechanic mechanic(name);
+        std::string role = "mechanik";
+        Mechanic mechanic(name, role);
 
         std::cout << "MENU GLOWNE:\n \n";
 

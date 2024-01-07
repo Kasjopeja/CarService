@@ -15,7 +15,6 @@ class Part
     unsigned int amount;
 
 public:
-
     Part(unsigned int, std::string, unsigned int);
     void displayPart();
     void editPart(unsigned int);

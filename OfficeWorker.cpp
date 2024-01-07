@@ -1,39 +1,47 @@
 #include "OfficeWorker.h"
 #include <iostream>
 
-OfficeWorker::OfficeWorker(const std::string& name) : User(name) {}
+OfficeWorker::OfficeWorker(const std::string& name, std::string& role) : User(name, role) {}
 
 void OfficeWorker::manageWarehouse() {
     
     while (true)
     {
-        //system("cls");
-
+        // wyswietlanie menu wyboru
         std::cout << "STAN MAGAZYNU " << std::endl;
 
+        std::cout << "0. Wyswietl stan zamowien\n";
         std::cout << "1. Wyswietl stan magazynu\n";
         std::cout << "2. Dodaj nowy element\n";
         std::cout << "3. Edytuj istniejacy element\n";
         std::cout << "4. Wyjscie\n";
 
+        // zaladowanie informacji o stanie magazynu do programu
         Warehouse warehouse;
-        warehouse.Wczytaj();
+        warehouse.loadData();
 
         int choice;
         std::cin >> choice;
 
         switch (choice)
         {
+        case 0:
+            // wysiwtlanie informacji o stanie zamowien
+            warehouse.displayOrders();
+            std::cin.ignore();
+            break;
         case 1:
-
-            warehouse.Wyswietl();
+            // wysiwtlanie informacji o stanie magazynu
+            warehouse.displayPart();
             std::cin.ignore();
             break;
         case 2:
-            warehouse.Dodaj();
+            // dodawanie nowego elementu do magazynu - towrzenie obiektu klasy Part
+            warehouse.addPart();
             break;
         case 3:
-            warehouse.Edytuj();
+            // edytowanie informacji o stanie magazynu - konkretnym obieckie klasy Part 
+            warehouse.editPart();
             break;
 
         case 4:

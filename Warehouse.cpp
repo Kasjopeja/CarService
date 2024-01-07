@@ -37,7 +37,7 @@ void Warehouse::displayPart()
 	}
 }
 
-// dodawanie nowego wpisu
+// dodawanie nowego wpisu do warehouseState
 void Warehouse::addPart()
 {
 	std::cout << "DODAWANIE NOWEGO ELEMENTU \n\n";
@@ -48,7 +48,7 @@ void Warehouse::addPart()
 	std::string name;
 	unsigned int amount;
 
-	// urzystkownik podaje informacje potrzebne do utworzenia npwego obiektu
+	// uzytkownik podaje informacje potrzebne do utworzenia npwego obiektu
 	std::cout << "Nazwa: ";
 	std::cin >> name;
 	std::cout << "Ilosc: ";
@@ -87,6 +87,40 @@ void Warehouse::editPart()
 		warehouseState[i].saveChangesToFIle();
 	}
 
+}
+
+// dodawanie nowego wpisu do orderState
+void Warehouse::addOrder()
+{
+	std::cout << "SK£ADANIE ZAMOWIENIA \n\n";
+
+	std::string name;
+	unsigned int amount;
+
+	// uzytkownik podaje informacje potrzebne do utworzenia npwego obiektu
+	std::cout << "Nazwa przedmiotu do zamówienia: ";
+	std::cin >> name;
+	std::cout << "Ilosc: ";
+	std::cin >> amount;
+
+	Part part(NULL, name, amount);
+	this->orderState.push_back(part);
+}
+
+void Warehouse::displayOrders()
+{
+	//przykladowe zamowienia
+	Part part1(NULL, "kolcki hamulcowe", 3);
+	this->orderState.push_back(part1);
+	Part part2(NULL, "swieca", 5);
+	this->orderState.push_back(part2);
+
+	std::cout << "ZLOZONE ZAMOWIENIA \n\n";
+
+	for (int i = 0; i < this->orderState.size(); i++)
+	{
+		this->orderState[i].displayPart();
+	}
 }
 
 void Part::displayPart()

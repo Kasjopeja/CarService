@@ -15,6 +15,7 @@ void Mechanic::manageWarehouse() {
     // wyswietlanie menu wyboru
     std::cout << "STAN MAGAZYNU \n" << std::endl;
 
+    std::cout << "0. Dodaj zamowienie\n";
     std::cout << "1. Wyswietl stan magazynu\n";
     std::cout << "2. Edytuj istniejacy element\n";
     std::cout << "3. Wyjscie\n";
@@ -24,6 +25,11 @@ void Mechanic::manageWarehouse() {
   
     switch (choice)
     {
+    case 0:
+        // dodawanie zamowienia
+        warehouse.addOrder();
+        std::cin.ignore();
+        break;
     case 1: 
         // wysiwtlanie informacji o stanie magazynu
         warehouse.displayPart();

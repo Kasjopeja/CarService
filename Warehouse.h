@@ -26,6 +26,7 @@ public:
 class Warehouse {
 
     std::vector <Part> warehouseState;
+    std::vector <Part> orderState;
 
 public:
 
@@ -33,6 +34,9 @@ public:
     void displayPart();
     void editPart();
     void addPart();
+    void addOrder();
+    void displayOrders();
+
 };
 
 

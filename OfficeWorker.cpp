@@ -10,6 +10,7 @@ void OfficeWorker::manageWarehouse() {
         // wyswietlanie menu wyboru
         std::cout << "STAN MAGAZYNU " << std::endl;
 
+        std::cout << "0. Wyswietl stan zamowien\n";
         std::cout << "1. Wyswietl stan magazynu\n";
         std::cout << "2. Dodaj nowy element\n";
         std::cout << "3. Edytuj istniejacy element\n";
@@ -24,6 +25,11 @@ void OfficeWorker::manageWarehouse() {
 
         switch (choice)
         {
+        case 0:
+            // wysiwtlanie informacji o stanie zamowien
+            warehouse.displayOrders();
+            std::cin.ignore();
+            break;
         case 1:
             // wysiwtlanie informacji o stanie magazynu
             warehouse.displayPart();

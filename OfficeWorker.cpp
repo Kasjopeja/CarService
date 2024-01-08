@@ -1,5 +1,6 @@
 #include "OfficeWorker.h"
 #include "Invoice.h"
+#include "Event.h"
 #include "Warehouse.h"
 #include <iostream>
 
@@ -74,6 +75,7 @@ void OfficeWorker::issueInvoice() {
 
         int choice;
         std::cin >> choice;
+        Part part(1, "Nakladka", 10);
 
         switch (choice)
         {
@@ -83,10 +85,10 @@ void OfficeWorker::issueInvoice() {
             std::cin.ignore();
             break;
         case 2:
-        //    invoice.addEvent();
+         //   invoice.addEventData(Event);
             break;
         case 3:
-            invoice.addPartsData(Part, 2);
+            invoice.addPartsData(part);
             break;
 
         case 4:

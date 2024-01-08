@@ -4,7 +4,6 @@
 
 #include "Event.h"
 #include "Warehouse.h"
-#include "Invoice.cpp"
 #include <vector>
 
 class Client {
@@ -25,14 +24,13 @@ class Invoice {
 public:
 
     
-    void addPartsData(const Part& parts, unsigned int userEnteredID);  //dodawanie czesci do faktury
+    void addPartsData(const Part& part);  //dodawanie czesci do faktury
    
 
-    void addEvent(const Event& event);  //dodawanie zlecenie do faktury
-    void addClient(const Client& client, std::ofstream& invoiceFile);   //dodaje dane klienta
+    void addEventData(const Event& event);  //dodawanie zlecenie do faktury
+    void addClient();   //dodaje dane klienta
     void Print(const std::string& fileName);   //drukowanie faktury
 };
-
 
 
 #endif //CARSERVICE_INVOICE_H

@@ -144,3 +144,13 @@ void Part::saveChangesToFIle()
 
 
 Part::Part(unsigned int ID, std::string name, unsigned int amount) : ID(ID), name(name), amount(amount) {}
+
+unsigned int Part::getID() const {
+	return ID;
+}
+std::string Part::getName() const {
+	return name;
+}
+unsigned int Part::getAmount() const {
+	return amount;
+}

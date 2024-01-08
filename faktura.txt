@@ -1,0 +1,7 @@
+Imie: Marek
+Imie: Towarek
+Imie: marektowarek@mail.pl
+Imie: 000000001
+ID: 1
+Nazwa: Nakladka
+-------------------------

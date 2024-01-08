@@ -63,25 +63,33 @@ void Invoice::addPartsData(const Part& part) {
 	}
 }
 
+void Invoice::addEventData()
+{
+	std::cout << "DODAWANIE ZLECENIA DO FAKTURY \n\n";
+
+	std::ofstream file("faktura.txt", std::ios::app); // otwieranie pliku zawierajacego fakture
+	std::string name;
+	std::string finishDate;
+	
 
 
-void Invoice::addEventData(const Event& event) {
-	// Otwieranie pliku do zapisu
-	std::ofstream file("faktura.txt", std::ios::app);
+	// uzytkownik podaje informacje o zleceniu
+	std::cout << "Nazwa zlecenia: ";
+	std::cin >> name;
+	std::cout << "Data wykonania: ";
+	std::cin >> finishDate;
+	
 
-	if (file.is_open()) {
-		// Wypisanie danych do pliku
-		file << "Typ usterki: " << event.getType() << std::endl;
-		file << "Data zg³oszenia: " << event.getReportDate() << std::endl;
-		file << "-------------------------" << std::endl;
 
-		// Zamkniecie plik
-		file.close();
 
-		std::cout << "Dane z obiektu Event zapisane do pliku: faktura.txt" << std::endl;
-	}
-	else {
-		std::cerr << "B³¹d: Nie uda³o siê otworzyæ pliku do zapisu." << std::endl;
-	}
+	// aktualizowanie informacji zawartych w pliku
+	file << "Zlecenie: " << name << std::endl;
+	file << "Data wykonania: " << finishDate << std::endl;
+	file << "-------------------------" << std::endl;
+
+	file.close();
 }
+
+
+
 

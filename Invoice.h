@@ -17,8 +17,6 @@ public:
 };
 
 class Invoice {
-    
-    float charge; //należność jako float
     std::vector<Event> events;  // zlecenie w vectorze
 
 public:
@@ -27,7 +25,7 @@ public:
     void addPartsData(const Part& part);  //dodawanie czesci do faktury
    
 
-    void addEventData(const Event& event);  //dodawanie zlecenie do faktury
+    void addEventData();  //dodawanie zlecenie do faktury
     void addClient();   //dodaje dane klienta
     void Print(const std::string& fileName);   //drukowanie faktury
 };

@@ -43,24 +43,20 @@ void Invoice::addPartsData() {
 
 	std::ofstream file("faktura.txt", std::ios::app); // otwieranie pliku zawierajacego fakture
 	std::string name;
+	int tmp;
 	//wybor dostepnych opcji
 	std::cout << "1. Dodanie czesci do faktury" << std::endl;
 	std::cout << "2. Wyjscie" << std::endl;
 
-	int choice;	//wprowadzenie numeru wybranej opcji
-	std::cin >> choice;
-
-	switch (choice)
-	{
-	case 1:
-		std::cout << "Nazwa wykorzystanej czesci: ";
-		std::cin >> name;
-		file << "Czesc: " << name << std::endl;	//wprowadzenie danych do pliku
+	
+		std::cout << "Ile czesci zostaje wprowadzone: ";
+		std::cin >> tmp;
+		for (int i = 0; i < tmp; i++) {				// petla pozwalajca wprowadzic kilka czesci za jednym razem
+			std::cout << "Nazwa wykorzystanej czesci: ";
+			std::cin >> name;
+			file << "Czesc: " << name << std::endl;	//wprowadzenie danych do pliku
+		}
 		file << "-------------------------" << std::endl;
-		break;
-	case 2:
-		return;
-	}
 	file.close();
 }
 

@@ -7,6 +7,16 @@
 #include "Invoice.cpp"
 #include <vector>
 
+class Client {
+    std::string name;
+    std::string lastname;
+    std::string mailAdress;
+    std::string phoneNumber;
+
+public:
+    Client(std::string, std::string, std::string, std::string);
+};
+
 class Invoice {
     
     float charge; //należność jako float
@@ -15,7 +25,7 @@ class Invoice {
 public:
 
     
-    void addPartsData(const Parts& parts, unsigned int userEnteredID);  //dodawanie czesci do faktury
+    void addPartsData(const Part& parts, unsigned int userEnteredID);  //dodawanie czesci do faktury
    
 
     void addEvent(const Event& event);  //dodawanie zlecenie do faktury

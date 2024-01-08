@@ -68,8 +68,9 @@ void OfficeWorker::issueInvoice() {
 
         std::cout << "1. Dodanie klienta do faktury" << std::endl;
         std::cout << "2. Dodaj zlecenia do faktury" << std::endl;
-        std::cout << "3. Dodanie części do faktury" << std::endl;
-        std::cout << "4. Wyjscie" << std::endl;
+        std::cout << "3. Dodanie czesci do faktury" << std::endl;
+        std::cout << "4. Dodanie naleznosci do faktury" << std::endl;
+        std::cout << "5. Wyjscie" << std::endl;
 
         Invoice invoice;
 
@@ -92,8 +93,11 @@ void OfficeWorker::issueInvoice() {
             invoice.addPartsData(part);
             std::cin.ignore();
             break;
-
         case 4:
+            invoice.addCharge();
+            std::cin.ignore();
+            break;
+        case 5:
             return;
         }
     }

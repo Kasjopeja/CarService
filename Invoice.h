@@ -23,11 +23,9 @@ public:
 
     
     void addPartsData(const Part& part);  //dodawanie czesci do faktury
-   
-
     void addEventData();  //dodawanie zlecenie do faktury
     void addClient();   //dodaje dane klienta
-    void Print(const std::string& fileName);   //drukowanie faktury
+    void addCharge();   //dodawanie kosztu do faktury
 };
 
 

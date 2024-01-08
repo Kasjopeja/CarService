@@ -90,6 +90,37 @@ void Invoice::addEventData()
 	file.close();
 }
 
+void Invoice::addCharge()
+{
+	std::cout << "DODAWANIE NALEZNOSCI DO FAKTURY \n\n";
 
+	std::ofstream file("faktura.txt", std::ios::app); // otwieranie pliku zawierajacego fakture
+
+	//wybor dostepnych opcji
+	std::cout << "1. Dodanie kosztu skladowego" << std::endl;
+	std::cout << "2. Dodaj ³acznej nalennosci do faktury" << std::endl;
+	std::cout << "3. Wyjscie" << std::endl;
+
+	int choice;	//wprowadzenie numeru wybranej opcji
+	std::cin >> choice;
+	int sum=0;
+	int subpart=0;
+
+	switch (choice)
+	{
+	case 1:
+		std::cout << "Podaj koszt skladowy: " << std::endl;
+		std::cin >> subpart;
+		sum = sum + subpart;	//dodawanie kosztu skladowego do calkowitej naleznosci
+		break;
+	case 2:
+		file << "Ca³kowita naleznosc za us³ugi: " << sum << std::endl;	//wprowadzenie danych do pliku
+		file << "-------------------------" << std::endl;
+		break;
+	case 3:
+		return;
+	}
+	file.close();
+}
 
 

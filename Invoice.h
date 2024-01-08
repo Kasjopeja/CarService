@@ -17,12 +17,11 @@ public:
 };
 
 class Invoice {
-    std::vector<Event> events;  // zlecenie w vectorze
 
 public:
 
     
-    void addPartsData(const Part& part);  //dodawanie czesci do faktury
+    void addPartsData();  //dodawanie czesci do faktury
     void addEventData();  //dodawanie zlecenie do faktury
     void addClient();   //dodaje dane klienta
     void addCharge();   //dodawanie kosztu do faktury

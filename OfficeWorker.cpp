@@ -76,9 +76,7 @@ void OfficeWorker::issueInvoice() {
 
         int choice;
         std::cin >> choice;
-        Part part(1, "Nakladka", 10);
   
-
         switch (choice)
         {
         case 1:
@@ -90,7 +88,7 @@ void OfficeWorker::issueInvoice() {
             std::cin.ignore();
             break;
         case 3:
-            invoice.addPartsData(part);
+            invoice.addPartsData();
             std::cin.ignore();
             break;
         case 4:

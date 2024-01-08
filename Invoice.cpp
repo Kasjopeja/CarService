@@ -38,29 +38,30 @@ void Invoice::addClient()
 	file.close();
 }
 
-void Invoice::addPartsData(const Part& part) {
-	// Przyjmujemy dane bezpoœrednio z obiektu Part
-	unsigned int partID = part.getID();
-	std::string partName = part.getName();
-	unsigned int partAmount = part.getAmount();
+void Invoice::addPartsData() {
+	std::cout << "DODAWANIE CZESCI DO FAKTURY \n\n";
 
-	// Otwierami plik do zapisu
-	std::ofstream file("faktura.txt", std::ios::app);
+	std::ofstream file("faktura.txt", std::ios::app); // otwieranie pliku zawierajacego fakture
+	std::string name;
+	//wybor dostepnych opcji
+	std::cout << "1. Dodanie czesci do faktury" << std::endl;
+	std::cout << "2. Wyjscie" << std::endl;
 
-	if (file.is_open()) {
-		// Wypisujemy dane do pliku
-		file << "ID: " << partID << std::endl;
-		file << "Nazwa: " << partName << std::endl;
+	int choice;	//wprowadzenie numeru wybranej opcji
+	std::cin >> choice;
+
+	switch (choice)
+	{
+	case 1:
+		std::cout << "Nazwa wykorzystanej czesci: ";
+		std::cin >> name;
+		file << "Czesc: " << name << std::endl;	//wprowadzenie danych do pliku
 		file << "-------------------------" << std::endl;
-
-		// Zamknij plik
-		file.close();
-
-		std::cout << "Dane zapisane do pliku: faktura.txt" << std::endl;
+		break;
+	case 2:
+		return;
 	}
-	else {
-		std::cerr << "B³¹d: Nie uda³o siê otworzyæ pliku do zapisu." << std::endl;
-	}
+	file.close();
 }
 
 void Invoice::addEventData()
@@ -90,6 +91,9 @@ void Invoice::addEventData()
 	file.close();
 }
 
+int sum = 0;
+int subpart = 0;
+
 void Invoice::addCharge()
 {
 	std::cout << "DODAWANIE NALEZNOSCI DO FAKTURY \n\n";
@@ -103,8 +107,6 @@ void Invoice::addCharge()
 
 	int choice;	//wprowadzenie numeru wybranej opcji
 	std::cin >> choice;
-	int sum=0;
-	int subpart=0;
 
 	switch (choice)
 	{

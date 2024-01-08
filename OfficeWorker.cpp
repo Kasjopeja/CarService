@@ -1,4 +1,6 @@
 #include "OfficeWorker.h"
+#include "Invoice.h"
+#include "Warehouse.h"
 #include <iostream>
 
 OfficeWorker::OfficeWorker(const std::string& name, std::string& role) : User(name, role) {}
@@ -84,7 +86,7 @@ void OfficeWorker::issueInvoice() {
         //    invoice.addEvent();
             break;
         case 3:
-        //    invoice.addPartsData();
+            invoice.addPartsData(Part, 2);
             break;
 
         case 4:

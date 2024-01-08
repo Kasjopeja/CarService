@@ -19,6 +19,9 @@ public:
     void displayPart();
     void editPart(unsigned int);
     void saveChangesToFIle();
+    unsigned int getID() const;
+    std::string getName() const;
+    unsigned int getAmount() const;
 };
 
 

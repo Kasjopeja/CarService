@@ -76,6 +76,7 @@ void OfficeWorker::issueInvoice() {
         int choice;
         std::cin >> choice;
         Part part(1, "Nakladka", 10);
+        Event event("Wyciek", "2024-01-04", "2024-01-10", "Zakonczone");
 
         switch (choice)
         {
@@ -85,7 +86,7 @@ void OfficeWorker::issueInvoice() {
             std::cin.ignore();
             break;
         case 2:
-         //   invoice.addEventData(Event);
+          //  invoice.addEventData(event);
             break;
         case 3:
             invoice.addPartsData(part);

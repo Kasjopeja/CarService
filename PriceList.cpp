@@ -53,8 +53,8 @@ void PriceList::addService() {
 //wyswietlanie cennika
 void PriceList::displayPriceList() {
 	std::cout << "Cennik uslug:" << std::endl;
-	for (Service& usluga : services) {
-		usluga.displayService();		//wyswietlanie uslugi
+	for (Service& service : services) {
+		service.displayService();		//wyswietlanie uslugi
 	}
 }
 
@@ -63,7 +63,7 @@ void PriceList::removeService(unsigned int ID) {
 
 	//szukanie uslugi o podanym ID, przenoszenie jej na koniec i usuwanie
 	auto it = std::remove_if(services.begin(), services.end(),
-		[ID](const Service& usluga) { return usluga.getIdService() == ID; });
+		[ID](const Service& service) { return service.getIdService() == ID; });
 
 	if (it != services.end()) {
 		services.erase(it, services.end());

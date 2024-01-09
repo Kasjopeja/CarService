@@ -35,5 +35,20 @@ namespace PriceListTests
 			Assert::IsFalse(expectedID == actualID);
 
 		}
+		TEST_METHOD(TestRemoveService)
+		{
+			PriceList priceList;
+			Service service(1, "Service1", 100);
+			priceList.addService(service); // Dodanie us³ugi
+
+			priceList.removeService(1); // Usuniêcie us³ugi
+
+			try {
+				priceList.addService(service); 
+			}
+			catch (const std::exception&) {
+				Assert::Fail();
+			}
+		}
 	};
 }

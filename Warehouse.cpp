@@ -123,6 +123,11 @@ void Warehouse::displayOrders()
 	}
 }
 
+Part Warehouse::getVectorPart(int index)
+{
+	return warehouseState[index];
+}
+
 void Part::displayPart()
 {
 	// wyswietlanie informacji o pojedynczym obiekcie klasy Part
@@ -144,3 +149,16 @@ void Part::saveChangesToFIle()
 
 
 Part::Part(unsigned int ID, std::string name, unsigned int amount) : ID(ID), name(name), amount(amount) {}
+
+unsigned int Part::getID()
+{
+	return this->ID;
+}
+unsigned int Part::getAmount()
+{
+	return this->amount;
+}
+std::string Part::getName()
+{
+	return this->name;
+}

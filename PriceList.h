@@ -31,7 +31,7 @@ public:
 	void addService();						//dodawanie nowej uslugi do cennika
 	void removeService(unsigned int ID);	//usuwanie uslugi z cennika
 	void chooseService();					//wybieranie uslugi
-	void addService(const Service& usluga);	//dodawanie istniejacej uslugi do cennika
+	void addService(const Service& service);	//dodawanie istniejacej uslugi do cennika
 	void changePrice();						//zmiana ceny uslugi
 };
 

@@ -74,8 +74,8 @@ void PriceList::removeService(unsigned int ID) {
 	}
 }
 //dodawanie istniejacej uslugi do cennika
-void PriceList::addService(const Service& usluga) {
-	services.push_back(usluga);
+void PriceList::addService(const Service& service) {
+	services.push_back(service);
 }
 
 //aktualizacja ceny uslugi
@@ -88,8 +88,8 @@ void PriceList::changePrice() {
 	unsigned int ID = selectedID;	//przypisanie zmiennej ID wybranej uslugi
 
 	//szukanie uslugi o podanym ID 
-	for (Service& usluga : services) {
-		if (usluga.getIdService() == ID) {
+	for (Service& service : services) {
+		if (service.getIdService() == ID) {
 			unsigned int newPrice;
 			std::cout << "Wprowadz nowa cene dla uslugi o ID " << ID << ": ";	//pobieranie nowej ceny od uzytkownika
 			std::cin >> newPrice;
@@ -102,7 +102,7 @@ void PriceList::changePrice() {
 				return;
 			}
 			//zmiana ceny uslugi
-			usluga.changePrice(newPrice);
+			service.changePrice(newPrice);
 			std::cout << "Zmieniono cene uslugi o ID " << ID << " na " << newPrice << std::endl;
 			return;
 		}
@@ -131,8 +131,8 @@ void PriceList::chooseService() {
 		return;
 	}
 	//szukanie uslugi o podanym ID
-	for (Service& usluga : services) {
-		if (usluga.getIdService() == ID) {
+	for (Service& service : services) {
+		if (service.getIdService() == ID) {
 			std::cout << "Wybrano usluge o nr ID: " << ID << std::endl;
 			selectedID = ID;
 			return;

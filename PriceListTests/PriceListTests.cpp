@@ -17,7 +17,15 @@ namespace PriceListTests
 			Assert::AreEqual(1u,service.getIdService());
 			Assert::AreEqual(std::string("TestService"), service.getName());
 			Assert::AreEqual(100u, service.getPrice());
-			//
+		}
+
+		TEST_METHOD(TestChangePrice) {
+			Service service(1, "TestService", 200);
+			service.changePrice(300);
+			unsigned int actualPrice = service.getPrice();
+			unsigned int expectedPrice = 300;
+			Assert::AreEqual(expectedPrice, actualPrice);
+
 		}
 	};
 }

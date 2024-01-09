@@ -27,5 +27,13 @@ namespace PriceListTests
 			Assert::AreEqual(expectedPrice, actualPrice);
 
 		}
+		TEST_METHOD(TestNonExistingService) {
+			Service service(1, "TestService", 200);	
+			unsigned int nonExistingServiceId = 123;
+			unsigned int actualID = service.getIdService();
+			unsigned int expectedID = nonExistingServiceId;
+			Assert::IsFalse(expectedID == actualID);
+
+		}
 	};
 }

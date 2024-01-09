@@ -24,6 +24,18 @@ void PriceList::addService() {
 	std::cout << "Podaj ID: ";
 	std::cin >> ID;
 
+	//sprawdzanie czy usluga o podanym ID juz istnieje
+	auto it = std::find_if(services.begin(), services.end(),
+		[ID](const Service& service) {
+			return service.getIdService() == ID;
+		});
+
+	if (it != services.end()) {
+		//przerwanie dodawania uslugi jesli usluga o podanym ID juz istnieje
+		std::cout << "Usluga o ID " << ID << " istnieje juz w cenniku." << std::endl;
+		return;
+	}
+
 	//pobieranie nazwy od uzytkownika
 	std::cout << "Podaj nazwe: ";
 	std::cin.ignore();				

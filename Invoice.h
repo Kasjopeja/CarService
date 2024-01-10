@@ -2,9 +2,29 @@
 #define CARSERVICE_INVOICE_H
 
 
-class Invoice {
+#include "Event.h"
+#include "Warehouse.h"
+#include <vector>
+
+class Client {
+    std::string name;
+    std::string lastname;
+    std::string mailAdress;
+    std::string phoneNumber;
+
 public:
-    // funkcje związane z fakturami
+    Client(std::string, std::string, std::string, std::string);
+};
+
+class Invoice {
+
+public:
+
+    
+    void addPartsData();  //dodawanie czesci do faktury
+    void addEventData();  //dodawanie zlecenie do faktury
+    void addClient();   //dodaje dane klienta
+    void addCharge();   //dodawanie kosztu do faktury
 };
 
 

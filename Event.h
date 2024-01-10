@@ -12,6 +12,10 @@ public:
 
     // Metoda wyświetlająca informacje o konkretnym wydarzeniu (naprawie).
     void displayEvent() const;
+    const std::string& getType() const;
+    const std::string& getReportDate() const;
+    const std::string& getPlannedDate() const;
+    const std::string& getStatus() const;
 
 private:
     std::string type;           // Typ usterki.

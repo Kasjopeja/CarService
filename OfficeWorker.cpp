@@ -1,4 +1,7 @@
 #include "OfficeWorker.h"
+#include "Invoice.h"
+#include "Event.h"
+#include "Warehouse.h"
 #include <iostream>
 
 OfficeWorker::OfficeWorker(const std::string& name, std::string& role) : User(name, role) {}
@@ -110,6 +113,44 @@ void OfficeWorker::managePriceList() {
 }
 
 void OfficeWorker::issueInvoice() {
-    std::cout << "Wystawianie faktury\n";
+    while (true)
+    {
+        //system("cls");
+
+        std::cout << "WYSTAWIANIE FAKTURY " << std::endl;
+
+        std::cout << "1. Dodanie klienta do faktury" << std::endl;
+        std::cout << "2. Dodaj zlecenia do faktury" << std::endl;
+        std::cout << "3. Dodanie czesci do faktury" << std::endl;
+        std::cout << "4. Dodanie naleznosci do faktury" << std::endl;
+        std::cout << "5. Wyjscie" << std::endl;
+
+        Invoice invoice;
+
+        int choice;
+        std::cin >> choice;
+  
+        switch (choice)
+        {
+        case 1:
+            invoice.addClient();
+            std::cin.ignore();
+            break;
+        case 2:
+            invoice.addEventData();
+            std::cin.ignore();
+            break;
+        case 3:
+            invoice.addPartsData();
+            std::cin.ignore();
+            break;
+        case 4:
+            invoice.addCharge();
+            std::cin.ignore();
+            break;
+        case 5:
+            return;
+        }
+    }
     // implementacja
 }

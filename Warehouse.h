@@ -15,11 +15,16 @@ class Part
     unsigned int amount;
 
 public:
-
     Part(unsigned int, std::string, unsigned int);
     void displayPart();
     void editPart(unsigned int);
     void saveChangesToFIle();
+
+    // wykorzystywane jedynie do testow jednostkowych
+    unsigned int getID();
+    unsigned int getAmount();
+    std::string getName();
+
 };
 
 
@@ -37,8 +42,11 @@ public:
     void addOrder();
     void displayOrders();
 
-};
 
+    // wykorzystywane jedynie do testow jednostkowych
+    Part getVectorPart(int index);
+
+};
 
 
 #endif //CARSERVICE_WAREHOUSE_H

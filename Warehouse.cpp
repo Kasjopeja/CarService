@@ -25,6 +25,7 @@ void Warehouse::loadData()
 
 }
 
+// wyswietlanie informacji o czesciach
 void Warehouse::displayPart()
 {
 	std::cout << "\n------------------------\n";

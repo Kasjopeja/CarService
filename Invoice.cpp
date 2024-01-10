@@ -3,112 +3,122 @@
 #include <string>
 #include "Invoice.h"
 #include "Event.h"
+#include "Warehouse.h"
 
-struct Client {
-    std::string name;
-    std::string lastname;
-    std::string mailAdress;
-    std::string phoneNumber;
-};
+void Invoice::addClient()
+{
+	std::cout << "DODAWANIE KLIENTA DO FAKTURY \n\n";
+
+	std::ofstream file("faktura.txt", std::ios::app); // otwieranie pliku zawierajacego fakture
+	std::string name;
+	std::string lastname;
+	std::string mailAddres;
+	std::string phoneNumber;
+	
+
+	// uzytkownik podaje informacje o kliencie
+	std::cout << "Imie: ";
+	std::cin >> name;
+	std::cout << "Nazwisko: ";
+	std::cin >> lastname;
+	std::cout << "Mail: ";
+	std::cin >> mailAddres;
+	std::cout << "Telefon: ";
+	std::cin >> phoneNumber;
 
 
-void addClient(const Client& client, std::ofstream& invoiceFile) {
-    invoiceFile << "Imiê: " << client.name << std::endl;
-    invoiceFile << "Nazwisko: " << client.lastname << std::endl;
-    invoiceFile << "Adres mailowy: " << client.mailAdress << std::endl;
-    invoiceFile << "Numer telefonu: " << client.phoneNumber << std::endl;
-    invoiceFile << "-------------------------" << std::endl;
+
+	// aktualizowanie informacji zawartych w pliku
+	file << "Imie: " << name << std::endl;
+	file << "Imie: " << lastname << std::endl;
+	file << "Imie: " << mailAddres << std::endl;
+	file << "Imie: " << phoneNumber << std::endl;
+	file << "-------------------------" << std::endl;
+
+	file.close();
 }
 
-void Invoice::addPartsData(const Parts& parts, unsigned int targetID) {
-    if (parts.ID == targetID) {
-        // Tutaj mo¿esz wykorzystaæ przekazane dane wed³ug potrzeb
-        std::cout << "ID: " << parts.ID << std::endl;
-        std::cout << "Nazwa: " << parts.name << std::endl;
-        std::cout << "Iloœæ: " << parts.amount << std::endl;
+void Invoice::addPartsData() {
+	std::cout << "DODAWANIE CZESCI DO FAKTURY \n\n";
 
-        // Mo¿esz teraz u¿yæ tych danych w klasie Invoice do dalszej obróbki
+	std::ofstream file("faktura.txt", std::ios::app); // otwieranie pliku zawierajacego fakture
+	std::string name;
+	int tmp;
+	//wybor dostepnych opcji
+	std::cout << "1. Dodanie czesci do faktury" << std::endl;
+	std::cout << "2. Wyjscie" << std::endl;
 
-        // Otwórz plik do zapisu
-        std::ofstream invoiceFilebbgb("invoice.txt", std::ios::app);
-
-        if (file.is_open()) {
-            // Zapisz dane do pliku
-            file << "ID: " << parts.ID << std::endl;
-            file << "Nazwa: " << parts.name << std::endl;
-            file << "Iloœæ: " << parts.amount << std::endl;
-            file << "-------------------------" << std::endl;
-
-            // Zamknij plik
-            file.close();
-
-            std::cout << "Dane zapisane do pliku: invoice.txt" << std::endl;
-        }
-        else {
-            std::cerr << "B³¹d: Nie uda³o siê otworzyæ pliku do zapisu." << std::endl;
-        }
-    }
+	
+		std::cout << "Ile czesci zostaje wprowadzone: ";
+		std::cin >> tmp;
+		for (int i = 0; i < tmp; i++) {				// petla pozwalajca wprowadzic kilka czesci za jednym razem
+			std::cout << "Nazwa wykorzystanej czesci: ";
+			std::cin >> name;
+			file << "Czesc: " << name << std::endl;	//wprowadzenie danych do pliku
+		}
+		file << "-------------------------" << std::endl;
+	file.close();
 }
 
-void Print(const std::string& fileName){
-    // otworzenie pliku do odczytu
-    std::ifstream plik(fileName);
+void Invoice::addEventData()
+{
+	std::cout << "DODAWANIE ZLECENIA DO FAKTURY \n\n";
 
-    if (plik.is_open()) {
-        std::string linia;
+	std::ofstream file("faktura.txt", std::ios::app); // otwieranie pliku zawierajacego fakture
+	std::string name;
+	std::string finishDate;
+	
 
-        // odczytannie i wypisanie zawartoœæ pliku linia po linii
-        while (std::getline(plik, linia)) {
-            std::cout << linia << std::endl;
-        }
 
-        // Zamknie plik
-        plik.close();
-    }
-    else {
-        std::cerr << "B³¹d: Nie uda³o siê otworzyæ pliku do odczytu." << std::endl;
-    }
+	// uzytkownik podaje informacje o zleceniu
+	std::cout << "Nazwa zlecenia: ";
+	std::cin >> name;
+	std::cout << "Data wykonania: ";
+	std::cin >> finishDate;
+	
+
+
+
+	// aktualizowanie informacji zawartych w pliku
+	file << "Zlecenie: " << name << std::endl;
+	file << "Data wykonania: " << finishDate << std::endl;
+	file << "-------------------------" << std::endl;
+
+	file.close();
 }
 
-int main() {
-    Client client;
+int sum = 0;
+int subpart = 0;
 
-    // Wprowadzanie dane klienta
-    std::cout << "Podaj imiê klienta: ";
-    std::getline(std::cin, client.name);
+void Invoice::addCharge()
+{
+	std::cout << "DODAWANIE NALEZNOSCI DO FAKTURY \n\n";
 
-    std::cout << "Podaj nazwisko klienta: ";
-    std::getline(std::cin, client.lastname);
+	std::ofstream file("faktura.txt", std::ios::app); // otwieranie pliku zawierajacego fakture
 
-    std::cout << "Podaj adres mailowy klienta: ";
-    std::getline(std::cin, client.mailAdress);
+	//wybor dostepnych opcji
+	std::cout << "1. Dodanie kosztu skladowego" << std::endl;
+	std::cout << "2. Dodaj ³acznej nalennosci do faktury" << std::endl;
+	std::cout << "3. Wyjscie" << std::endl;
 
-    std::cout << "Podaj numer telefonu klienta: ";
-    std::getline(std::cin, client.phoneNumber);
+	int choice;	//wprowadzenie numeru wybranej opcji
+	std::cin >> choice;
 
-    // Otwieranie plik do zapisu
-    std::ofstream plik("faktura.txt", std::ios::app);
-
-    if (plik.is_open()) {
-        // Dodawanie danych klienta do faktury
-        addClient(client, plik);
-
-        // Zamknanie plik
-        plik.close();
-
-        std::cout << "Dane klienta dodane do faktury i zapisane do pliku." << std::endl;
-    }
-    else {
-        std::cerr << "B³¹d: Nie uda³o siê otworzyæ pliku do zapisu." << std::endl;
-        return 1;
-    }
-    // Podanie nazwê pliku, który chcemy odczytaæ
-    std::string fileName = "faktura.txt";
-
-    // Wywo³anie funkcji
-    Print(fileName);
-
-
-
-    return 0;
+	switch (choice)
+	{
+	case 1:
+		std::cout << "Podaj koszt skladowy: " << std::endl;
+		std::cin >> subpart;
+		sum = sum + subpart;	//dodawanie kosztu skladowego do calkowitej naleznosci
+		break;
+	case 2:
+		file << "Ca³kowita naleznosc za us³ugi: " << sum << std::endl;	//wprowadzenie danych do pliku
+		file << "-------------------------" << std::endl;
+		break;
+	case 3:
+		return;
+	}
+	file.close();
 }
+
+

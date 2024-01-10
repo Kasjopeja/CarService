@@ -69,7 +69,7 @@ void Warehouse::editPart()
 	unsigned int amount;
 	unsigned int ID;
 
-	// uzytkownik wybiera który obiekt chce edytowaæ i jak on ma siê zmieniæ
+	// uzytkownik wybiera ktÃ³ry obiekt chce edytowaÃ¦ i jak on ma siÃª zmieniÃ¦
 	std::cout << "ID elementu do edycji: ";
 	std::cin >> ID;
 	std::cout << std::endl;
@@ -92,13 +92,13 @@ void Warehouse::editPart()
 // dodawanie nowego wpisu do orderState
 void Warehouse::addOrder()
 {
-	std::cout << "SK£ADANIE ZAMOWIENIA \n\n";
+	std::cout << "SKÂ£ADANIE ZAMOWIENIA \n\n";
 
 	std::string name;
 	unsigned int amount;
 
 	// uzytkownik podaje informacje potrzebne do utworzenia npwego obiektu
-	std::cout << "Nazwa przedmiotu do zamówienia: ";
+	std::cout << "Nazwa przedmiotu do zamÃ³wienia: ";
 	std::cin >> name;
 	std::cout << "Ilosc: ";
 	std::cin >> amount;
@@ -150,15 +150,12 @@ void Part::saveChangesToFIle()
 
 Part::Part(unsigned int ID, std::string name, unsigned int amount) : ID(ID), name(name), amount(amount) {}
 
-unsigned int Part::getID()
-{
-	return this->ID;
+unsigned int Part::getID() {
+	return ID;
 }
-unsigned int Part::getAmount()
-{
-	return this->amount;
+std::string Part::getName()  {
+	return name;
 }
-std::string Part::getName()
-{
-	return this->name;
+unsigned int Part::getAmount() {
+	return amount;
 }

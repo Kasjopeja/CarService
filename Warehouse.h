@@ -19,10 +19,12 @@ public:
     void displayPart();
     void editPart(unsigned int);
     void saveChangesToFIle();
-    unsigned int getID() const;
-    std::string getName() const;
-    unsigned int getAmount() const;
-};
+
+    // wykorzystywane jedynie do testow jednostkowych
+    unsigned int getID();
+    unsigned int getAmount();
+    std::string getName();
+
 
 
 class Warehouse {
@@ -39,8 +41,11 @@ public:
     void addOrder();
     void displayOrders();
 
-};
 
+    // wykorzystywane jedynie do testow jednostkowych
+    Part getVectorPart(int index);
+
+};
 
 
 #endif //CARSERVICE_WAREHOUSE_H

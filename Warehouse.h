@@ -25,6 +25,7 @@ public:
     unsigned int getAmount();
     std::string getName();
 
+};
 
 
 class Warehouse {
